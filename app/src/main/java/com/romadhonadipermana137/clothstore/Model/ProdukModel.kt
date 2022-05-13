@@ -8,8 +8,8 @@ data class ProdukModel (
     @SerializedName("nama_kategori") val nama_kategori: String,
     @SerializedName("harga") val harga: Int,
     @SerializedName("stok") val stok: Int,
-    @SerializedName("nama_diskon") val nama_diskon: String,
-    @SerializedName("diskon_persen") val diskon_persen: Int,
+    @SerializedName("nama_diskon") val nama_diskon: String?,
+    @SerializedName("diskon_persen") val diskon_persen: Int?,
     @SerializedName("gambar") val gambar: String?,
     @SerializedName("deskripsi") val deskripsi: String?
 )
