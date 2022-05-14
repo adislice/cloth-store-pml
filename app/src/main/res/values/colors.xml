@@ -7,4 +7,16 @@
     <color name="teal_700">#FF018786</color>
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
+
+    <!--pallete blue-->
+    <color name="blue_900">#1e3a8a</color>
+    <color name="blue_800">#1e40af</color>
+    <color name="blue_700">#1d4ed8</color>
+    <color name="blue_600">#2563eb</color>
+    <color name="blue_500">#3b82f6</color>
+    <color name="blue_400">#60a5fa</color>
+    <color name="blue_300">#93c5fd</color>
+    <color name="blue_200">#bfdbfe</color>
+    <color name="blue_100">#dbeafe</color>
+    <color name="blue_50">#eff6ff</color>
 </resources>

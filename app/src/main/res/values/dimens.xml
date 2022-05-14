@@ -1,3 +1,17 @@
 <resources>
-    <dimen name="text_margin">16dp</dimen>
+    <!--padding element-->
+    <dimen name="pad_sm">8dp</dimen>
+    <dimen name="pad_md">16dp</dimen>
+    <dimen name="pad_lg">24dp</dimen>
+    <dimen name="pad_xl">32dp</dimen>
+    <dimen name="pad_2xl">48dp</dimen>
+    <dimen name="pad_3xl">64dp</dimen>
+
+    <!--padding text-->
+    <dimen name="pad_t_sm">8sp</dimen>
+    <dimen name="pad_t_md">16sp</dimen>
+    <dimen name="pad_t_lg">24sp</dimen>
+    <dimen name="pad_t_xl">32sp</dimen>
+    <dimen name="pad_t_2xl">48sp</dimen>
+    <dimen name="pad_t_3xl">64sp</dimen>
 </resources>
