@@ -20,6 +20,7 @@
     <color name="blue_100">#dbeafe</color>
     <color name="blue_50">#eff6ff</color>
 
+
     <!--profile activity-->
     <color name="profile_gradient_start">#61e7ff</color>
     <color name="profile_gradient_end">#2e9fff</color>
@@ -27,8 +28,11 @@
     <!--Warna Komponen-->
     <color name="bg_button">#333333</color>
     <color name="bg_button_disabled">#FF979797</color>
+    <color name="red_disc">#FF6652</color>
 
     <!--Text color-->
     <color name="main_text">#212121</color>
     <color name="submain_text">#757575</color>
+
+
 </resources>
