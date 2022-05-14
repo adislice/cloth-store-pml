@@ -19,4 +19,8 @@
     <color name="blue_200">#bfdbfe</color>
     <color name="blue_100">#dbeafe</color>
     <color name="blue_50">#eff6ff</color>
+
+    <!--profile activity-->
+    <color name="profile_gradient_start">#61e7ff</color>
+    <color name="profile_gradient_end">#2e9fff</color>
 </resources>

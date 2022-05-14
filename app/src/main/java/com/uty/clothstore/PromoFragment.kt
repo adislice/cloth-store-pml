@@ -23,13 +23,13 @@ class PromoFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        var fm = requireActivity().supportFragmentManager
-        var btn = view.findViewById<Button>(R.id.tombol)
-        var promo = view.findViewById<TextView>(R.id.promo_code)
+        val fm = requireActivity().supportFragmentManager
+        val btn = view.findViewById<Button>(R.id.tombol)
+        val promo = view.findViewById<TextView>(R.id.promo_code)
 
         btn.setOnClickListener {
             promo.text = "asasas"
-            var fragme = HomeFragment()
+            val fragme = HomeFragment()
             fm.beginTransaction()
                 .replace(R.id.content_frame, fragme)
                 .commit()

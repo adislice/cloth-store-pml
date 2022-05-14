@@ -37,6 +37,12 @@ class MainActivity : AppCompatActivity() {
                         .replace(R.id.content_frame, fragme)
                         .commit()
                 }
+                R.id.menu_profil -> {
+                    var fragme = ProfileFragment()
+                    fm.beginTransaction()
+                        .replace(R.id.content_frame, fragme)
+                        .commit()
+                }
             }
 
             return@setOnItemSelectedListener true
