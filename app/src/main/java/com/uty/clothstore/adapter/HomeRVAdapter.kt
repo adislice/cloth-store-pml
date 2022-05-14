@@ -57,7 +57,7 @@ class HomeRVAdapter(private val dataSet: ArrayList<HomeRVModel>) :
             .load(produkGambar)
             .centerCrop()
             .transition(DrawableTransitionOptions.withCrossFade())
-            .placeholder(R.drawable.shimmer)
+            .placeholder(R.color.white)
             .into(viewHolder.itemView.findViewById(R.id.produk_gambar))
 
         viewHolder.itemView.setOnClickListener{
