@@ -11,7 +11,7 @@ import com.bumptech.glide.Glide
 import com.bumptech.glide.load.resource.drawable.DrawableTransitionOptions
 import com.uty.clothstore.LoginActivity
 import com.uty.clothstore.R
-import com.uty.clothstore.model.HomeRVModel
+import com.uty.clothstore.model.*
 import java.text.NumberFormat
 import java.util.*
 import kotlin.collections.ArrayList
@@ -52,12 +52,10 @@ class HomeRVAdapter(private val dataSet: ArrayList<HomeRVModel>) :
         viewHolder.produk_judul.text = dataSet[position].produkJudul
         viewHolder.produk_harga.text = rupiah(dataSet[position].produkHarga)
 
-        Glide
-            .with(viewHolder.itemView.context)
+        Glide.with(viewHolder.itemView.context)
             .load(produkGambar)
-            .centerCrop()
             .transition(DrawableTransitionOptions.withCrossFade())
-            .placeholder(R.color.white)
+            .placeholder(R.drawable.nophoto)
             .into(viewHolder.itemView.findViewById(R.id.produk_gambar))
 
         viewHolder.itemView.setOnClickListener{

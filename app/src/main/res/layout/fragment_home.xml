@@ -3,14 +3,16 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".HomeFragment">
+    tools:context=".HomeFragment"
+    android:clipToPadding="false">
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/home_rv_produk"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_marginStart="@dimen/pad_md"
-        android:layout_marginEnd="@dimen/pad_md">
+        android:paddingLeft="@dimen/pad_md"
+        android:paddingRight="@dimen/pad_md"
+        android:clipToPadding="false">
 
     </androidx.recyclerview.widget.RecyclerView>
 </androidx.core.widget.NestedScrollView>

@@ -23,7 +23,7 @@ class HomeFragment : Fragment() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        produkAdapter = HomeRVAdapter(produkList)
+
 
         produkList.add(
             HomeRVModel(
@@ -45,6 +45,7 @@ class HomeFragment : Fragment() {
                 "【FRAGILE】ジップアップニット　セーター　サイズ38",
                 300000,
                 "https://ksufmvei.sirv.com/cloth-store/m60346299519_1.jpg"))
+        produkAdapter = HomeRVAdapter(produkList)
     }
 
     override fun onCreateView(

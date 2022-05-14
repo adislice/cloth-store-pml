@@ -1,4 +1,4 @@
-package com.uty.clothstore.Model
+package com.uty.clothstore.model
 
 import com.google.gson.annotations.SerializedName
 

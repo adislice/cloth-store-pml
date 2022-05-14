@@ -1,67 +1,57 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="wrap_content"
-    android:layout_height="wrap_content">
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    app:cardElevation="20dp"
+    android:layout_margin="5dp"
+    app:cardCornerRadius="10dp"
+    android:clipToPadding="false">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="300dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        android:padding="@dimen/pad_md">
+        android:layout_height="match_parent">
 
-        <com.sdsmdg.harjot.materialshadows.MaterialShadowFrameLayoutWrapper
+        <androidx.constraintlayout.widget.ConstraintLayout
             android:id="@+id/image_container"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent">
+            android:layout_height="match_parent">
 
-            <androidx.cardview.widget.CardView
-                android:id="@+id/cardView"
+            <ImageView
+                android:id="@+id/produk_gambar"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:src="@drawable/nophoto"
+                app:layout_constraintDimensionRatio="H,1:1"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+            <TextView
+                android:id="@+id/produk_judul"
                 android:layout_width="match_parent"
-                android:layout_height="200dp"
-                android:elevation="@dimen/pad_md"
-                app:cardCornerRadius="@dimen/pad_md"
-                app:layout_constraintEnd_toEndOf="parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/pad_sm"
+                android:fontFamily="@font/montserrat_bold"
+                android:maxLines="2"
+                android:text="Judul Produk"
+                android:paddingHorizontal="5dp"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent">
+                app:layout_constraintTop_toBottomOf="@+id/produk_gambar" />
 
-                <ImageView
-                    android:id="@+id/produk_gambar"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:elevation="@dimen/pad_lg"
-                    android:src="@drawable/nophoto" />
+            <TextView
+                android:id="@+id/produk_harga"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/montserrat_bold"
+                android:maxLines="2"
+                android:text="Harga Produk"
+                android:paddingHorizontal="5dp"
+                android:paddingBottom="5dp"
+                app:layout_constraintTop_toBottomOf="@id/produk_judul"/>
 
-            </androidx.cardview.widget.CardView>
+        </androidx.constraintlayout.widget.ConstraintLayout>
 
-        </com.sdsmdg.harjot.materialshadows.MaterialShadowFrameLayoutWrapper>
-        <TextView
-            android:id="@+id/produk_judul"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="@dimen/pad_sm"
-            android:fontFamily="@font/montserrat_bold"
-            android:maxLines="2"
-            android:text="Judul Produk"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/image_container" />
 
-        <TextView
-            android:id="@+id/produk_harga"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:fontFamily="@font/montserrat_bold"
-            android:maxLines="2"
-            android:text="Harga Produk"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintStart_toStartOf="parent"/>
     </androidx.constraintlayout.widget.ConstraintLayout>
-</androidx.constraintlayout.widget.ConstraintLayout>
+
+</androidx.cardview.widget.CardView>

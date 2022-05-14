@@ -1,8 +1,8 @@
 package com.uty.clothstore.API
 
-import com.uty.clothstore.Model.DaftarProdukModel
-import com.uty.clothstore.Model.ProdukModel
-import com.uty.clothstore.Model.ResponseModel
+import com.uty.clothstore.model.DaftarProdukModel
+import com.uty.clothstore.model.ProdukModel
+import com.uty.clothstore.model.ResponseModel
 import retrofit2.Call
 import retrofit2.http.Field
 import retrofit2.http.GET

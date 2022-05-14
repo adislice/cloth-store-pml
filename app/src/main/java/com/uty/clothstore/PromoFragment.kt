@@ -7,6 +7,8 @@ import android.view.ViewGroup
 import android.widget.Button
 import android.widget.TextView
 import androidx.fragment.app.Fragment
+import com.bumptech.glide.Glide
+import com.bumptech.glide.load.resource.drawable.DrawableTransitionOptions
 
 class PromoFragment : Fragment() {
 
@@ -35,5 +37,10 @@ class PromoFragment : Fragment() {
 //            (activity as MainActivity).getBottomNav().menu.findItem(R.id.menu_home).isChecked = true
 
         }
+        Glide.with(requireContext())
+            .load("https://pbs.twimg.com/media/FLZUG3FXwAUN6jP.jpg")
+            .transition(DrawableTransitionOptions.withCrossFade())
+            .placeholder(R.color.white)
+            .into(view.findViewById(R.id.iv_contoh))
     }
 }

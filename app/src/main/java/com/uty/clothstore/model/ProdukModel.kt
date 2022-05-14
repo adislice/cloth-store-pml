@@ -1,8 +1,8 @@
-package com.uty.clothstore.Model
+package com.uty.clothstore.model
 
 import com.google.gson.annotations.SerializedName
 
-data class DaftarProdukModel(
+data class ProdukModel (
     @SerializedName("id_produk") val id_produk: Int,
     @SerializedName("nama_produk") val nama_produk: String,
     @SerializedName("nama_kategori") val nama_kategori: String,
@@ -12,6 +12,4 @@ data class DaftarProdukModel(
     @SerializedName("diskon_persen") val diskon_persen: Int?,
     @SerializedName("gambar") val gambar: String?,
     @SerializedName("deskripsi") val deskripsi: String?
-
 )
-
