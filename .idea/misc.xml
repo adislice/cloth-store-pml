@@ -24,6 +24,7 @@
         <entry key="..\:/PROJECT/GITHUB/cloth-store-pml/app/src/main/res/drawable/ic_minus.xml" value="0.2203125" />
         <entry key="..\:/PROJECT/GITHUB/cloth-store-pml/app/src/main/res/drawable/ic_plus_white.xml" value="0.2203125" />
         <entry key="..\:/PROJECT/GITHUB/cloth-store-pml/app/src/main/res/drawable/selector_home.xml" value="0.2203125" />
+        <entry key="..\:/PROJECT/GITHUB/cloth-store-pml/app/src/main/res/drawable/shape_strikethrough.xml" value="0.2203125" />
         <entry key="..\:/PROJECT/GITHUB/cloth-store-pml/app/src/main/res/font-v26/montserrat.xml" value="0.234375" />
         <entry key="..\:/PROJECT/GITHUB/cloth-store-pml/app/src/main/res/font-v26/playfair_display.xml" value="0.234375" />
         <entry key="..\:/PROJECT/GITHUB/cloth-store-pml/app/src/main/res/font-v26/roboto.xml" value="0.2203125" />
@@ -31,7 +32,8 @@
         <entry key="..\:/PROJECT/GITHUB/cloth-store-pml/app/src/main/res/font/playfair_display.xml" value="0.234375" />
         <entry key="..\:/PROJECT/GITHUB/cloth-store-pml/app/src/main/res/font/playfair_display_regular.xml" value="0.234375" />
         <entry key="..\:/PROJECT/GITHUB/cloth-store-pml/app/src/main/res/font/roboto.xml" value="0.2203125" />
-        <entry key="..\:/PROJECT/GITHUB/cloth-store-pml/app/src/main/res/layout/activity_detail_produk.xml" value="0.22" />
+        <entry key="..\:/PROJECT/GITHUB/cloth-store-pml/app/src/main/res/layout/activity_detail_produk.xml" value="0.2" />
+        <entry key="..\:/PROJECT/GITHUB/cloth-store-pml/app/src/main/res/layout/activity_keranjang.xml" value="0.20416666666666666" />
         <entry key="..\:/PROJECT/GITHUB/cloth-store-pml/app/src/main/res/layout/activity_landing.xml" value="0.4474885844748858" />
         <entry key="..\:/PROJECT/GITHUB/cloth-store-pml/app/src/main/res/layout/activity_login.xml" value="0.25" />
         <entry key="..\:/PROJECT/GITHUB/cloth-store-pml/app/src/main/res/layout/activity_main.xml" value="0.20416666666666666" />
@@ -41,6 +43,8 @@
         <entry key="..\:/PROJECT/GITHUB/cloth-store-pml/app/src/main/res/layout/fragment_profile.xml" value="0.24467099165894346" />
         <entry key="..\:/PROJECT/GITHUB/cloth-store-pml/app/src/main/res/layout/fragment_promo.xml" value="0.20416666666666666" />
         <entry key="..\:/PROJECT/GITHUB/cloth-store-pml/app/src/main/res/layout/item_home_carousel.xml" value="0.22" />
+        <entry key="..\:/PROJECT/GITHUB/cloth-store-pml/app/src/main/res/layout/item_home_produk.xml" value="0.20416666666666666" />
+        <entry key="..\:/PROJECT/GITHUB/cloth-store-pml/app/src/main/res/layout/item_keranjang.xml" value="0.5" />
         <entry key="..\:/PROJECT/GITHUB/cloth-store-pml/app/src/main/res/layout/item_produk.xml" value="0.20416666666666666" />
         <entry key="..\:/PROJECT/GITHUB/cloth-store-pml/app/src/main/res/menu/bottom_menu.xml" value="0.20416666666666666" />
       </map>

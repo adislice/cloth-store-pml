@@ -4,6 +4,8 @@ import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.*
+import androidx.core.content.ContentProviderCompat.requireContext
+import androidx.core.content.ContextCompat
 import androidx.core.content.ContextCompat.startActivity
 import java.text.NumberFormat
 import java.util.*
@@ -62,13 +64,17 @@ class DetailProdukActivity : AppCompatActivity() {
         btnKembali.setOnClickListener {finish()}
         btnKeranjang.setOnClickListener {
             // Intent ke Activity Keranjang
-//            bukaKeranjang(id_user)
+            val intent = Intent(this, KeranjangActivity::class.java)
+//    intent.putExtra("id_user", id_user)
+            startActivity(intent)
         }
         btnTambahKeranjang.setOnClickListener{
+            val intent = Intent(this, KeranjangActivity::class.java)
             Toast.makeText(applicationContext, "kuantitas : " + etQty.text.toString().toInt(), Toast.LENGTH_SHORT).show()
 //            if (kategori == "obat") {
 //                tambahObatKeKeranjang(id_user, idobat, etqty.text.toString().toInt())
 //            }
+            startActivity(intent)
         }
     }
 }
@@ -78,11 +84,4 @@ private fun rupiah(number: Double): String {
     val numberFormat = NumberFormat.getCurrencyInstance(localeID)
     numberFormat.maximumFractionDigits = 0
     return numberFormat.format(number)
-}
-
-
-private fun bukaKeranjang(id_user: Int){
-//    val intent = Intent(this, KeranjangActivity::class.java)
-//    intent.putExtra("id_user", id_user)
-//    startActivity(intent)
 }

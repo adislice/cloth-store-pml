@@ -134,6 +134,7 @@
                         android:contentDescription="Ini adalah harga asli sebelum dikurangi dengan diskonnya"
                         android:fontFamily="@font/montserrat"
                         android:padding="@dimen/pad_sm"
+                        android:textColor="@color/submain_text"
                         android:text="Rp10.000"
                         android:textSize="@dimen/pad_t_md"
                         android:background="@drawable/shape_strikethrough"
@@ -204,7 +205,7 @@
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/detail_produk_option_keranjang"
         android:layout_width="match_parent"
-        android:layout_height="120dp"
+        android:layout_height="wrap_content"
         android:background="@color/white"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"

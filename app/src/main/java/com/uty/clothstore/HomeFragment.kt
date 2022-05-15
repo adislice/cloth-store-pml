@@ -24,7 +24,6 @@ class HomeFragment : Fragment() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
-
         produkList.add(
             HomeRVModel(
                 "キャップ HIROSHIMA VTS",
@@ -63,7 +62,6 @@ class HomeFragment : Fragment() {
             this.setHasFixedSize(true)
             adapter = produkAdapter
             layoutManager = produkViewManager
-            Log.e(TAG, "Error pas inisiasi Recycler View")
         }
     }
 
