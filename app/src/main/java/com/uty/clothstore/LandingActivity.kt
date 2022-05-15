@@ -9,14 +9,16 @@ import android.widget.Button
 class LandingActivity: AppCompatActivity() {
 
     private val TAG = "LandingActivity"
+    private lateinit var btnRegister: Button
+    private lateinit var btnLogin: Button
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_landing)
 
-        getSupportActionBar()?.hide()
+        supportActionBar?.hide()
 
-        val btnRegister: Button = findViewById(R.id.btnLandingRegister)
-        val btnLogin: Button = findViewById(R.id.btnLandingLogin)
+        btnRegister = findViewById(R.id.btnLandingRegister)
+        btnLogin = findViewById(R.id.btnLandingLogin)
 
         btnRegister.setBackgroundResource(R.drawable.bg_button)
         btnLogin.setBackgroundResource(R.drawable.bg_button)
@@ -24,13 +26,13 @@ class LandingActivity: AppCompatActivity() {
         btnLogin.setOnClickListener {
             val i = Intent(this.applicationContext, LoginActivity::class.java)
             startActivity(i)
-            Log.v(TAG, "Berhasil pindah ke Login")
+            Log.v(TAG, "Berhasil pindah ke Activity Login")
         }
 
         btnRegister.setOnClickListener {
-            val i = Intent(this.applicationContext, MainActivity::class.java)
+            val i = Intent(this.applicationContext, RegisterActivity::class.java)
             startActivity(i)
-            Log.v(TAG, "Berhasil pindah ke Main Activity")
+            Log.v(TAG, "Berhasil pindah ke Activity Register")
         }
     }
 }
