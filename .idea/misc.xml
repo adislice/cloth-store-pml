@@ -11,11 +11,18 @@
         <entry key="..\:/Kuliah/Android/project/cloth-store/app/src/main/res/layout/fragment_scrolling.xml" value="0.20416666666666666" />
         <entry key="..\:/Kuliah/Android/project/cloth-store/app/src/main/res/menu/bottom_menu.xml" value="0.20416666666666666" />
         <entry key="..\:/PROJECT/GITHUB/cloth-store-pml/app/src/main/res/drawable/bg_button.xml" value="0.2203125" />
+        <entry key="..\:/PROJECT/GITHUB/cloth-store-pml/app/src/main/res/drawable/bg_button_et_qty.xml" value="0.2203125" />
+        <entry key="..\:/PROJECT/GITHUB/cloth-store-pml/app/src/main/res/drawable/bg_button_qty.xml" value="0.2203125" />
         <entry key="..\:/PROJECT/GITHUB/cloth-store-pml/app/src/main/res/drawable/bg_gradient_profile.xml" value="0.2203125" />
         <entry key="..\:/PROJECT/GITHUB/cloth-store-pml/app/src/main/res/drawable/bg_image_profile.xml" value="0.2203125" />
         <entry key="..\:/PROJECT/GITHUB/cloth-store-pml/app/src/main/res/drawable/bg_image_profile_border.xml" value="0.2203125" />
         <entry key="..\:/PROJECT/GITHUB/cloth-store-pml/app/src/main/res/drawable/bg_shimmer.xml" value="0.2203125" />
         <entry key="..\:/PROJECT/GITHUB/cloth-store-pml/app/src/main/res/drawable/ic_android_black_24dp.xml" value="0.2203125" />
+        <entry key="..\:/PROJECT/GITHUB/cloth-store-pml/app/src/main/res/drawable/ic_cart.xml" value="0.2203125" />
+        <entry key="..\:/PROJECT/GITHUB/cloth-store-pml/app/src/main/res/drawable/ic_cart_white.xml" value="0.2203125" />
+        <entry key="..\:/PROJECT/GITHUB/cloth-store-pml/app/src/main/res/drawable/ic_chevron_left.xml" value="0.2203125" />
+        <entry key="..\:/PROJECT/GITHUB/cloth-store-pml/app/src/main/res/drawable/ic_minus.xml" value="0.2203125" />
+        <entry key="..\:/PROJECT/GITHUB/cloth-store-pml/app/src/main/res/drawable/ic_plus_white.xml" value="0.2203125" />
         <entry key="..\:/PROJECT/GITHUB/cloth-store-pml/app/src/main/res/drawable/selector_home.xml" value="0.2203125" />
         <entry key="..\:/PROJECT/GITHUB/cloth-store-pml/app/src/main/res/font-v26/montserrat.xml" value="0.234375" />
         <entry key="..\:/PROJECT/GITHUB/cloth-store-pml/app/src/main/res/font-v26/playfair_display.xml" value="0.234375" />
@@ -24,6 +31,7 @@
         <entry key="..\:/PROJECT/GITHUB/cloth-store-pml/app/src/main/res/font/playfair_display.xml" value="0.234375" />
         <entry key="..\:/PROJECT/GITHUB/cloth-store-pml/app/src/main/res/font/playfair_display_regular.xml" value="0.234375" />
         <entry key="..\:/PROJECT/GITHUB/cloth-store-pml/app/src/main/res/font/roboto.xml" value="0.2203125" />
+        <entry key="..\:/PROJECT/GITHUB/cloth-store-pml/app/src/main/res/layout/activity_detail_produk.xml" value="0.22" />
         <entry key="..\:/PROJECT/GITHUB/cloth-store-pml/app/src/main/res/layout/activity_landing.xml" value="0.4474885844748858" />
         <entry key="..\:/PROJECT/GITHUB/cloth-store-pml/app/src/main/res/layout/activity_login.xml" value="0.1" />
         <entry key="..\:/PROJECT/GITHUB/cloth-store-pml/app/src/main/res/layout/activity_main.xml" value="0.20416666666666666" />

@@ -23,4 +23,12 @@
     <!--profile activity-->
     <color name="profile_gradient_start">#61e7ff</color>
     <color name="profile_gradient_end">#2e9fff</color>
+
+    <!--Warna Komponen-->
+    <color name="bg_button">#333333</color>
+    <color name="bg_button_disabled">#FF979797</color>
+
+    <!--Text color-->
+    <color name="main_text">#212121</color>
+    <color name="submain_text">#757575</color>
 </resources>

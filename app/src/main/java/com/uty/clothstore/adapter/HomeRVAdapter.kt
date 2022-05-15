@@ -9,7 +9,7 @@ import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.bumptech.glide.load.resource.drawable.DrawableTransitionOptions
-import com.uty.clothstore.LoginActivity
+import com.uty.clothstore.DetailProdukActivity
 import com.uty.clothstore.R
 import com.uty.clothstore.model.*
 import java.text.NumberFormat
@@ -60,7 +60,7 @@ class HomeRVAdapter(private val dataSet: ArrayList<HomeRVModel>) :
 
         viewHolder.itemView.setOnClickListener{
             val context = viewHolder.itemView.context
-            val intent = Intent(context, LoginActivity::class.java)
+            val intent = Intent(context, DetailProdukActivity::class.java)
 //            intent.putExtra()
 //            intent.putExtra()
 //            intent.putExtra()

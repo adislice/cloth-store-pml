@@ -13,11 +13,14 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.ClothStore">
         <activity
+            android:name=".DetailProdukActivity"
+            android:exported="false"/>
+        <activity
             android:name=".LoginActivity"
             android:exported="true" />
         <activity
             android:name=".MainActivity"
-            android:exported="true"></activity>
+            android:exported="true" />
         <activity
             android:name=".LandingActivity"
             android:exported="true">
