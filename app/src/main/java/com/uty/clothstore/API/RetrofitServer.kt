@@ -5,7 +5,7 @@ import retrofit2.converter.gson.GsonConverterFactory
 
 class RetrofitServer {
     companion object {
-        private val baseURL: String = "https://raw.githubusercontent.com/adislice/response-sample/main/"
+        private val baseURL: String = "https://store.elfreid.my.id/"
         private var retro: Retrofit? = null
 
         fun getConnection(): Retrofit? {

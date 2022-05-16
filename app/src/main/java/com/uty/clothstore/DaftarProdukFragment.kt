@@ -6,9 +6,15 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
 import androidx.fragment.app.Fragment
+import androidx.recyclerview.widget.GridLayoutManager
+import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
 import com.uty.clothstore.API.APIRequestData
 import com.uty.clothstore.API.RetrofitServer
+import com.uty.clothstore.adapter.DaftarProdukRVAdapter
+import com.uty.clothstore.adapter.HomeRVAdapter
 import com.uty.clothstore.model.DaftarProdukModel
+import com.uty.clothstore.model.HomeRVModel
 import com.uty.clothstore.model.ResponseModel
 import retrofit2.Call
 import retrofit2.Callback
@@ -16,6 +22,10 @@ import retrofit2.Response
 import retrofit2.create
 
 class DaftarProdukFragment : Fragment() {
+    private var produkList = ArrayList<DaftarProdukModel>()
+    private var produkView: RecyclerView? = null
+    private var produkAdapter: RecyclerView.Adapter<*>? = null
+    private var produkViewManager: GridLayoutManager? = null
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -27,6 +37,9 @@ class DaftarProdukFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+
+        produkViewManager = GridLayoutManager(requireContext(), 2, LinearLayoutManager.VERTICAL, false)
+        produkView = view.findViewById(R.id.rv_daftar_produk)
 
         ambilDataDaftarProduk()
     }
@@ -41,9 +54,14 @@ class DaftarProdukFragment : Fragment() {
             ) {
                 when (response.code()) {
                     200 -> {
-                        val produkList = response.body()!!.records
-                        val msg = response.body()!!.message
-                        Toast.makeText(requireContext(), produkList!!.size.toString(), Toast.LENGTH_LONG).show()
+                        produkList = response.body()!!.records!!
+                        produkAdapter = DaftarProdukRVAdapter(produkList)
+
+                        produkView?.apply {
+                            this.setHasFixedSize(true)
+                            adapter = produkAdapter
+                            layoutManager = produkViewManager
+                        }
                     }
                     404 -> Toast.makeText(requireContext(), response.raw().request().url().toString(), Toast.LENGTH_LONG).show()
 

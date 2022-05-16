@@ -10,7 +10,7 @@ interface APIRequestData {
 
     // Produk
     // * Tampil semua data produk
-    @GET("produk/tampil_semua_data.json")
+    @GET("produk/tampil_semua_data.php")
     fun produk_tampil_semua_data(): Call<ResponseModel<DaftarProdukModel>>
 
     // * Tampil 1 data produk

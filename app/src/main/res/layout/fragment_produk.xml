@@ -5,9 +5,13 @@
     android:layout_height="match_parent"
     tools:context=".DaftarProdukFragment">
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_margin="@dimen/text_margin"
-        android:text="@string/large_text" />
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/rv_daftar_produk"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:paddingLeft="@dimen/pad_md"
+        android:paddingRight="@dimen/pad_md"
+        android:clipToPadding="false">
+
+    </androidx.recyclerview.widget.RecyclerView>
 </androidx.core.widget.NestedScrollView>
