@@ -17,8 +17,9 @@ class MainActivity : AppCompatActivity() {
 
         if (savedInstanceState == null) {
             var t = fm.beginTransaction()
-            var fragme = PromoFragment()
+            var fragme = DaftarProdukFragment()
             t.replace(R.id.content_frame, fragme).commit()
+            bott_nav.menu.findItem(R.id.menu_produk).isChecked = true
         } else {
             fragm = fm.findFragmentById(R.id.content_frame)!!
         }
@@ -31,8 +32,8 @@ class MainActivity : AppCompatActivity() {
                         .replace(R.id.content_frame, fragme)
                         .commit()
                 }
-                R.id.menu_promo -> {
-                    var fragme = PromoFragment()
+                R.id.menu_produk -> {
+                    var fragme = DaftarProdukFragment()
                     fm.beginTransaction()
                         .replace(R.id.content_frame, fragme)
                         .commit()
@@ -47,7 +48,7 @@ class MainActivity : AppCompatActivity() {
 
             return@setOnItemSelectedListener true
         }
-        bott_nav.menu.findItem(R.id.menu_promo).isChecked = true
+
 
     }
 

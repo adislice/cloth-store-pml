@@ -6,7 +6,7 @@
         android:icon="@drawable/ic_home"
         android:iconTint="@color/black"/>
     <item
-        android:id="@+id/menu_promo"
+        android:id="@+id/menu_produk"
         android:title="Produk"
         android:icon="@drawable/ic_kaos"
         android:iconTint="@color/black"/>

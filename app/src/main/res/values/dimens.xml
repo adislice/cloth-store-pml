@@ -14,4 +14,5 @@
     <dimen name="pad_t_xl">32sp</dimen>
     <dimen name="pad_t_2xl">48sp</dimen>
     <dimen name="pad_t_3xl">64sp</dimen>
+    <dimen name="text_margin">16dp</dimen>
 </resources>

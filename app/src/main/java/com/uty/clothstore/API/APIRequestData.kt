@@ -1,16 +1,57 @@
 package com.uty.clothstore.API
 
-import com.uty.clothstore.model.DaftarProdukModel
-import com.uty.clothstore.model.ProdukModel
-import com.uty.clothstore.model.ResponseModel
+import com.uty.clothstore.model.*
 import retrofit2.Call
 import retrofit2.http.Field
 import retrofit2.http.GET
+import retrofit2.http.POST
 
 interface APIRequestData {
-    @GET("produk/tampil_semua_data.php")
+
+    // Produk
+    // * Tampil semua data produk
+    @GET("produk/tampil_semua_data.json")
     fun produk_tampil_semua_data(): Call<ResponseModel<DaftarProdukModel>>
 
+    // * Tampil 1 data produk
     @GET("produk/tampil_data.php")
     fun produk_tampil_data(@Field("id_produk") id_produk: Int): Call<ResponseModel<ProdukModel>>
+
+    // User
+    // * Login user
+    @GET("user/login.php")
+    fun user_login(@Field("username") username: String,
+                   @Field("password") password: String
+    ): Call<ResponseModel<UserLoginModel>>
+
+    // * Register user
+    @POST("user/register.php")
+    fun user_register(@Field("username") username: String,
+                      @Field("nama") nama: String,
+                      @Field("email") email: String,
+                      @Field("no_telp") no_telp: String,
+                      @Field("alamat") alamat: String,
+                      @Field("password") password: String
+    ): Call<ResponseModel<*>>
+
+    // * Tampil 1 data user
+    @GET("user/tampil_data.php")
+    fun user_tampil_data(@Field("id") id: Int): Call<ResponseModel<UserModel>>
+
+    // Transaksi
+    // * Tambah transaksi
+    @POST("transaksi/tambah_transaksi.php")
+    fun tambah_transaksi(@Field("id_user") id_user: Int,
+                              @Field("penerima") penerima: String,
+                              @Field("alamat_penerima") alamat_penerima: String,
+                              @Field("no_telp_penerima") no_telp_penerima: String,
+                              @Field("status") status: String
+    ): Call<ResponseModel<TambahTransaksiModel>>
+
+    // * Tambah produk ke transaksi
+    @POST("transaksi/tambah_detail_transaksi.php")
+    fun tambah_detail_transaksi(@Field("id_transaksi") id_transaksi: Int,
+                                @Field("id_produk") id_produk: Int,
+                                @Field("qty") qty: Int
+    ): Call<ResponseModel<*>>
 }

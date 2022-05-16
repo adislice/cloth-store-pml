@@ -71,4 +71,5 @@ class HomeFragment : Fragment() {
         produkView = null
         produkViewManager = null
     }
+
 }
