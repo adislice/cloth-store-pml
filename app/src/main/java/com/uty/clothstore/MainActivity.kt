@@ -1,7 +1,10 @@
 package com.uty.clothstore
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.widget.Button
+import android.widget.ImageButton
 import androidx.fragment.app.Fragment
 import com.google.android.material.bottomnavigation.BottomNavigationView
 
@@ -12,6 +15,7 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
+//        var menuKeranjang = findViewById<ImageButton>(R.id.menu_keranjang)
         var bott_nav = findViewById<BottomNavigationView>(R.id.bottom_nav)
         var fm = supportFragmentManager
 
@@ -48,8 +52,10 @@ class MainActivity : AppCompatActivity() {
 
             return@setOnItemSelectedListener true
         }
-
-
+//        menuKeranjang.setOnClickListener{
+//            val intent = Intent(this, KeranjangActivity::class.java)
+//            startActivity(intent)
+//        }
     }
 
     fun getBottomNav(): BottomNavigationView{
