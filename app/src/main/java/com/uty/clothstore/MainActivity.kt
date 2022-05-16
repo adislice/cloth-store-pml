@@ -17,9 +17,9 @@ class MainActivity : AppCompatActivity() {
 
         if (savedInstanceState == null) {
             var t = fm.beginTransaction()
-            var fragme = DaftarProdukFragment()
+            var fragme = HomeFragment()
             t.replace(R.id.content_frame, fragme).commit()
-            bott_nav.menu.findItem(R.id.menu_produk).isChecked = true
+            bott_nav.menu.findItem(R.id.menu_home).isChecked = true
         } else {
             fragm = fm.findFragmentById(R.id.content_frame)!!
         }
