@@ -2,9 +2,7 @@ package com.uty.clothstore.API
 
 import com.uty.clothstore.model.*
 import retrofit2.Call
-import retrofit2.http.Field
-import retrofit2.http.GET
-import retrofit2.http.POST
+import retrofit2.http.*
 
 interface APIRequestData {
 
@@ -54,4 +52,9 @@ interface APIRequestData {
                                 @Field("id_produk") id_produk: Int,
                                 @Field("qty") qty: Int
     ): Call<ResponseModel<*>>
+
+    // Produk per kategori
+    @GET("produk/tampil_semua_data.php")
+    fun tampil_semua_data_by_kategori(@Query("kategori", encoded = true) id_kategori: Int
+    ): Call<ResponseModel<DaftarProdukModel>>
 }

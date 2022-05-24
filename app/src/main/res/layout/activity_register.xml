@@ -16,6 +16,7 @@
             android:orientation="vertical"
             android:paddingStart="@dimen/pad_xl"
             android:paddingEnd="@dimen/pad_xl"
+            android:layout_marginVertical="@dimen/pad_lg"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintRight_toRightOf="parent"
