@@ -1,7 +1,10 @@
 package com.uty.clothstore
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.widget.Button
+import android.widget.Toast
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.uty.clothstore.adapter.KeranjangRVAdapter
@@ -12,66 +15,45 @@ class KeranjangActivity : AppCompatActivity() {
     private var keranjangList = ArrayList<KeranjangRVModel>()
     private var keranjangAdapter: RecyclerView.Adapter<*>? = null
     private var keranjangViewManager: LinearLayoutManager? = null
+    private lateinit var btnCheckout: Button
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_keranjang)
 
+        btnCheckout = findViewById(R.id.keranjang_checkout)
         keranjangView = findViewById(R.id.keranjang_rv)
         keranjangList.add(
             KeranjangRVModel(
-                "キャップ HIROSHIMA VTS",
-                200000,
+                "FRAGILE - Oversized Wool Sweater Dewasa Elegan Sederhana",
+                10000,
                 "https://ksufmvei.sirv.com/cloth-store/m62335136641_1.jpg",
                 1))
         keranjangList.add(
             KeranjangRVModel(
-                "トレンチコート (帝人)グリーン　　新品未使用",
-                1000000,
-                "https://ksufmvei.sirv.com/cloth-store/m11717748462_1.jpg",
+                "Vivienne Westwood Red Label Denim",
+                10000,
+                "https://static.mercdn.net/item/detail/orig/photos/m13451739216_1.jpg?1643179806",
                 1))
         keranjangList.add(
             KeranjangRVModel(
-                "トップス",
-                450000,
-                "https://ksufmvei.sirv.com/cloth-store/m56266346169_1.jpg",
+                "L'EST ROSE Gaun Pola Bunga Kotak-kotak Musim Semi / Musim Panas",
+                10000,
+                "https://static.mercdn.net/item/detail/orig/photos/m43540024457_1.jpg?1652407185",
                 1))
         keranjangList.add(
             KeranjangRVModel(
-                "【FRAGILE】ジップアップニット　セーター　サイズ38",
-                300000,
-                "https://ksufmvei.sirv.com/cloth-store/m60346299519_1.jpg",
+                "HERILL 22ss Jacket Weekend NEW Warna Blue Navy",
+                10000,
+                "https://static.mercdn.net/item/detail/orig/photos/m85062866189_1.jpg?1650211616",
                 1))
         keranjangList.add(
             KeranjangRVModel(
-                "【FRAGILE】ジップアップニット　セーター　サイズ38",
-                300000,
-                "https://ksufmvei.sirv.com/cloth-store/m60346299519_1.jpg",
+                "L'EST ROSE Dress Hitam Lipit Renda Kamisol Ukuran S",
+                10000,
+                "https://static.mercdn.net/item/detail/orig/photos/m10322858278_1.jpg?1651474675",
                 1))
-        keranjangList.add(
-            KeranjangRVModel(
-                "【FRAGILE】ジップアップニット　セーター　サイズ38",
-                300000,
-                "https://ksufmvei.sirv.com/cloth-store/m60346299519_1.jpg",
-                1))
-        keranjangList.add(
-            KeranjangRVModel(
-                "【FRAGILE】ジップアップニット　セーター　サイズ38",
-                300000,
-                "https://ksufmvei.sirv.com/cloth-store/m60346299519_1.jpg",
-                1))
-        keranjangList.add(
-            KeranjangRVModel(
-                "【FRAGILE】ジップアップニット　セーター　サイズ38",
-                300000,
-                "https://ksufmvei.sirv.com/cloth-store/m60346299519_1.jpg",
-                1))
-        keranjangList.add(
-            KeranjangRVModel(
-                "【FRAGILE】ジップアップニット　セーター　サイズ38",
-                300000,
-                "https://ksufmvei.sirv.com/cloth-store/m60346299519_1.jpg",
-                1))
+
         keranjangViewManager = LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false)
 
         keranjangAdapter = KeranjangRVAdapter(keranjangList)
@@ -79,6 +61,11 @@ class KeranjangActivity : AppCompatActivity() {
             this.setHasFixedSize(true)
             adapter = keranjangAdapter
             layoutManager = keranjangViewManager
+        }
+
+        btnCheckout.setOnClickListener{
+            val intent = Intent(this, CheckoutActivity::class.java)
+            startActivity(intent)
         }
     }
 }

@@ -28,6 +28,18 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent">
 
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Rp. 50000"
+            android:layout_marginStart="@dimen/pad_md"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            android:textSize="@dimen/pad_t_lg"
+            android:fontFamily="@font/montserrat_regular"
+            android:textColor="@color/main_text"/>
+
         <Button
             android:id="@+id/keranjang_checkout"
             android:layout_width="wrap_content"
