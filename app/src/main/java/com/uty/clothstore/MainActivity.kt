@@ -6,6 +6,7 @@ import android.os.Bundle
 import android.widget.Button
 import android.widget.ImageButton
 import androidx.fragment.app.Fragment
+import com.google.android.material.appbar.MaterialToolbar
 import com.google.android.material.bottomnavigation.BottomNavigationView
 
 class MainActivity : AppCompatActivity() {
@@ -52,10 +53,21 @@ class MainActivity : AppCompatActivity() {
 
             return@setOnItemSelectedListener true
         }
-//        menuKeranjang.setOnClickListener{
-//            val intent = Intent(this, KeranjangActivity::class.java)
-//            startActivity(intent)
-//        }
+
+        val appbar: MaterialToolbar = findViewById(R.id.topAppBar)
+
+        appbar.setOnMenuItemClickListener { item ->
+            when(item.itemId) {
+                R.id.menu_keranjang -> {
+                    val intent = Intent(this, KeranjangActivity::class.java)
+                    startActivity(intent)
+                    return@setOnMenuItemClickListener true
+                }
+                else -> return@setOnMenuItemClickListener true
+            }
+        }
+
+
     }
 
     fun getBottomNav(): BottomNavigationView{
