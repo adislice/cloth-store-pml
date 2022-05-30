@@ -56,6 +56,7 @@
                     android:layout_marginBottom="@dimen/pad_sm">
 
                     <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/et_reg_username"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:inputType="text"/>
@@ -74,6 +75,7 @@
                     android:layout_marginBottom="@dimen/pad_sm">
 
                     <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/et_reg_nama"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:inputType="text"/>
@@ -92,6 +94,7 @@
                     android:layout_marginBottom="@dimen/pad_sm">
 
                     <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/et_reg_email"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:inputType="textEmailAddress"/>
@@ -112,7 +115,8 @@
                     <com.google.android.material.textfield.TextInputEditText
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:inputType="phone"/>
+                        android:inputType="phone"
+                        android:id="@+id/et_reg_telp"/>
 
                 </com.google.android.material.textfield.TextInputLayout>
 
@@ -130,7 +134,8 @@
                     <com.google.android.material.textfield.TextInputEditText
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:inputType="text"/>
+                        android:inputType="text"
+                        android:id="@+id/et_reg_alamat"/>
 
                 </com.google.android.material.textfield.TextInputLayout>
 
@@ -146,6 +151,7 @@
                     android:layout_marginBottom="@dimen/pad_sm">
 
                     <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/et_reg_password"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:inputType="textPassword"/>
@@ -200,6 +206,11 @@
             </LinearLayout>
         </LinearLayout>
 
+
     </androidx.core.widget.NestedScrollView>
+    <include
+        android:id="@+id/loading_register"
+        android:visibility="gone"
+        layout="@layout/layout_loading"/>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

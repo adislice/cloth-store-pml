@@ -43,6 +43,7 @@
             <com.google.android.material.textfield.TextInputEditText
                 android:layout_width="match_parent"
                 android:layout_height="50dp"
+                android:id="@+id/et_log_username"
                 />
 
         </com.google.android.material.textfield.TextInputLayout>
@@ -60,7 +61,8 @@
             <com.google.android.material.textfield.TextInputEditText
                 android:layout_width="match_parent"
                 android:layout_height="50dp"
-                android:inputType="textPassword"/>
+                android:inputType="textPassword"
+                android:id="@+id/et_log_password"/>
 
         </com.google.android.material.textfield.TextInputLayout>
         <Button
@@ -89,5 +91,9 @@
                 android:textColor="?attr/colorPrimary"/>
         </LinearLayout>
     </LinearLayout>
+    <include
+        android:id="@+id/loading_login"
+        android:visibility="gone"
+        layout="@layout/layout_loading"/>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

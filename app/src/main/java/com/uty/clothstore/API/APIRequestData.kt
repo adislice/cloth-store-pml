@@ -18,23 +18,24 @@ interface APIRequestData {
     // User
     // * Login user
     @GET("user/login.php")
-    fun user_login(@Field("username") username: String,
-                   @Field("password") password: String
+    fun user_login(@Query("username", encoded = true) username: String,
+                   @Query("password", encoded = true) password: String
     ): Call<ResponseModel<UserLoginModel>>
 
     // * Register user
     @POST("user/register.php")
+    @FormUrlEncoded
     fun user_register(@Field("username") username: String,
                       @Field("nama") nama: String,
                       @Field("email") email: String,
                       @Field("no_telp") no_telp: String,
                       @Field("alamat") alamat: String,
                       @Field("password") password: String
-    ): Call<ResponseModel<*>>
+    ): Call<ResponseModel<String>>
 
     // * Tampil 1 data user
     @GET("user/tampil_data.php")
-    fun user_tampil_data(@Field("id") id: Int): Call<ResponseModel<UserModel>>
+    fun user_tampil_data(@Query("id", encoded=true) id: Int): Call<ResponseModel<UserModel>>
 
     // Transaksi
     // * Tambah transaksi
