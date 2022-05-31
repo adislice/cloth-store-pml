@@ -3,6 +3,7 @@ package com.uty.clothstore
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.view.View
 import android.widget.*
 import com.bumptech.glide.Glide
 import com.bumptech.glide.load.resource.drawable.DrawableTransitionOptions
@@ -31,6 +32,7 @@ class DetailProdukActivity : AppCompatActivity() {
     private lateinit var tvHargaAsliProduk: TextView
     private lateinit var tvHargaFinalProduk: TextView
     private lateinit var tvDeskripsiProduk: TextView
+    private lateinit var loadingDetail: View
     private var qty: Int = 1
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -52,10 +54,12 @@ class DetailProdukActivity : AppCompatActivity() {
         tvHargaAsliProduk = findViewById(R.id.detail_produk_harga_asli)
         tvHargaFinalProduk = findViewById(R.id.detail_produk_harga_final)
         tvDeskripsiProduk = findViewById(R.id.detail_produk_deskripsi)
+        loadingDetail = findViewById(R.id.loading_detail_produk)
 
         val id_user = intent.getIntExtra("id_user", 0)
 
         val id_produk = intent.getIntExtra("id_produk", 1)
+
         retrieveDetailProduk(id_produk)
 
         // INTERAKSI QUANTITY
@@ -82,7 +86,7 @@ class DetailProdukActivity : AppCompatActivity() {
         }
         btnTambahKeranjang.setOnClickListener{
             val intent = Intent(this, KeranjangActivity::class.java)
-            Toast.makeText(applicationContext, "kuantitas : " + etQty.text.toString().toInt(), Toast.LENGTH_SHORT).show()
+//            Toast.makeText(applicationContext, "kuantitas : " + etQty.text.toString().toInt(), Toast.LENGTH_SHORT).show()
 //            if (kategori == "obat") {
 //                tambahObatKeKeranjang(id_user, idobat, etqty.text.toString().toInt())
 //            }
@@ -90,11 +94,14 @@ class DetailProdukActivity : AppCompatActivity() {
         }
     }
     private fun retrieveDetailProduk(id_produk: Int){
+        loadingDetail.visibility = View.VISIBLE
         val ardData = RetrofitServer.getConnection()!!.create(APIRequestData::class.java)
         val tampilProduk = ardData.produk_tampil_data(id_produk)
         tampilProduk.enqueue(object: Callback<ResponseModel<ProdukModel>> {
 
             override fun onFailure(call: Call<ResponseModel<ProdukModel>>, t: Throwable) {
+                Toast.makeText(this@DetailProdukActivity, "Gagal meload produk", Toast.LENGTH_LONG).show()
+                loadingDetail.visibility = View.GONE
                 TODO("Not yet implemented")
             }
 
@@ -122,6 +129,7 @@ class DetailProdukActivity : AppCompatActivity() {
                         tvDeskripsiProduk.text = response.body()!!.records!![0].deskripsi
                     }
                 }
+                loadingDetail.visibility = View.GONE
             }
         })
     }

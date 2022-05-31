@@ -79,7 +79,7 @@ class HomeFragment : Fragment() {
             adapter = bannerAdapter
             layoutManager = bannerViewManager
         }
-        Toast.makeText(requireActivity(), MyApplication.id_user.toString(), Toast.LENGTH_LONG).show()
+//        Toast.makeText(requireActivity(), MyApplication.id_user.toString(), Toast.LENGTH_LONG).show()
     }
 
     override fun onDestroyView() {
