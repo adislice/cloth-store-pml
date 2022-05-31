@@ -1,4 +1,15 @@
 package com.uty.clothstore.model
 
-data class HomeRVModel (val produkJudul: String, val produkHarga: Int, val produkGambar: String) {
+import com.google.gson.annotations.SerializedName
+
+data class HomeRVModel (
+    @SerializedName("id_produk") val id_produk: Int,
+    @SerializedName("nama_produk") val nama_produk: String,
+    @SerializedName("nama_kategori") val nama_kategori: String,
+    @SerializedName("harga") val harga: Int,
+    @SerializedName("stok") val stok: Int,
+    @SerializedName("nama_diskon") val nama_diskon: String?,
+    @SerializedName("diskon_persen") val diskon_persen: Int?,
+    @SerializedName("gambar") val gambar: String?,
+    @SerializedName("deskripsi") val deskripsi: String?) {
 }

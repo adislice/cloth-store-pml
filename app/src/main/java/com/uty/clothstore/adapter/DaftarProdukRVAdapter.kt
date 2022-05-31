@@ -6,14 +6,13 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
-import android.widget.Toast
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.bumptech.glide.load.resource.drawable.DrawableTransitionOptions
 import com.uty.clothstore.DetailProdukActivity
+import com.uty.clothstore.MyApplication.Companion.id_user
 import com.uty.clothstore.R
 import com.uty.clothstore.model.DaftarProdukModel
-import com.uty.clothstore.model.HomeRVModel
 import java.text.NumberFormat
 import java.util.*
 import kotlin.collections.ArrayList
@@ -28,7 +27,6 @@ class DaftarProdukRVAdapter(private val dataSet: ArrayList<DaftarProdukModel>) :
         val produk_diskon_persen: TextView
 
         init {
-            // Define click listener for the ViewHolder's View.
             produk_judul = view.findViewById(R.id.produk_judul)
             produk_harga = view.findViewById(R.id.produk_harga)
             produk_gambar = view.findViewById(R.id.produk_gambar)
@@ -44,8 +42,8 @@ class DaftarProdukRVAdapter(private val dataSet: ArrayList<DaftarProdukModel>) :
     }
 
     override fun onBindViewHolder(viewHolder: ViewHolder, position: Int) {
-        val produkId: Int = dataSet[position].id_produk
-        val produkGambar: String = dataSet[position].gambar!!
+        var produkId: Int = dataSet[position].id_produk
+        var produkGambar: String = dataSet[position].gambar!!
 
         viewHolder.produk_judul.text = dataSet[position].nama_produk
         viewHolder.produk_harga.text = rupiah(dataSet[position].harga)
@@ -66,9 +64,8 @@ class DaftarProdukRVAdapter(private val dataSet: ArrayList<DaftarProdukModel>) :
         viewHolder.itemView.setOnClickListener{
             val context = viewHolder.itemView.context
             val intent = Intent(context, DetailProdukActivity::class.java)
-//          intent.putExtra()
-//            intent.putExtra()
-//            intent.putExtra()
+            intent.putExtra("id_produk", produkId)
+            intent.putExtra("id_user", id_user)
             context.startActivity(intent)
         }
     }

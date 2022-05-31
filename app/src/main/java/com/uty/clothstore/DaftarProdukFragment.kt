@@ -12,14 +12,11 @@ import androidx.recyclerview.widget.RecyclerView
 import com.uty.clothstore.API.APIRequestData
 import com.uty.clothstore.API.RetrofitServer
 import com.uty.clothstore.adapter.DaftarProdukRVAdapter
-import com.uty.clothstore.adapter.HomeRVAdapter
 import com.uty.clothstore.model.DaftarProdukModel
-import com.uty.clothstore.model.HomeRVModel
 import com.uty.clothstore.model.ResponseModel
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
-import retrofit2.create
 
 class DaftarProdukFragment : Fragment() {
     private var produkList = ArrayList<DaftarProdukModel>()
