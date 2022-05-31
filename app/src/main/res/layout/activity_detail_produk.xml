@@ -270,4 +270,8 @@
             android:layout_margin="@dimen/pad_md"/>
 
     </androidx.constraintlayout.widget.ConstraintLayout>
+    <include
+        android:id="@+id/loading_detail_produk"
+        android:visibility="gone"
+        layout="@layout/layout_loading"/>
 </androidx.constraintlayout.widget.ConstraintLayout>
