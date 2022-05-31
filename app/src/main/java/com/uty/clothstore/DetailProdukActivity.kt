@@ -56,9 +56,7 @@ class DetailProdukActivity : AppCompatActivity() {
         tvDeskripsiProduk = findViewById(R.id.detail_produk_deskripsi)
         loadingDetail = findViewById(R.id.loading_detail_produk)
 
-
         val id_user = intent.getIntExtra("id_user", 0)
-
 
         val id_produk = intent.getIntExtra("id_produk", 1)
 
@@ -104,13 +102,13 @@ class DetailProdukActivity : AppCompatActivity() {
             override fun onFailure(call: Call<ResponseModel<ProdukModel>>, t: Throwable) {
                 Toast.makeText(this@DetailProdukActivity, "Gagal meload produk", Toast.LENGTH_LONG).show()
                 loadingDetail.visibility = View.GONE
+                TODO("Not yet implemented")
             }
 
             override fun onResponse(
                 call: Call<ResponseModel<ProdukModel>>,
                 response: Response<ResponseModel<ProdukModel>>
             ) {
-
                 when(response.code()){
                     200 -> {
                         val img = response.body()!!.records!![0].gambar

@@ -14,7 +14,7 @@ interface APIRequestData {
     // * Tampil 1 data produk
     @GET("produk/tampil_data.php")
     fun produk_tampil_data(@Query("id", encoded = true) id_produk: Int): Call<ResponseModel<ProdukModel>>
-
+  
     // User
     // * Login user
     @GET("user/login.php")
