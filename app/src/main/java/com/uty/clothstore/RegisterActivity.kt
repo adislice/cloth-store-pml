@@ -23,8 +23,9 @@ class RegisterActivity : AppCompatActivity() {
     private lateinit var etNama: EditText
     private lateinit var etEmail: EditText
     private lateinit var etAlamat: EditText
-    private lateinit var etPassword: EditText
     private lateinit var etNoTelp: EditText
+    private lateinit var etPassword: EditText
+    private lateinit var etPassword2: EditText
     private lateinit var loading: View
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -38,16 +39,50 @@ class RegisterActivity : AppCompatActivity() {
         etNama = findViewById(R.id.et_reg_nama)
         etUsername = findViewById(R.id.et_reg_username)
         etEmail = findViewById(R.id.et_reg_email)
+        etNoTelp = findViewById(R.id.et_reg_telp)
         etAlamat = findViewById(R.id.et_reg_alamat)
         etPassword = findViewById(R.id.et_reg_password)
-        etNoTelp = findViewById(R.id.et_reg_telp)
+        etPassword2 = findViewById(R.id.et_reg_password2)
         loading = findViewById(R.id.loading_register)
         
         btnRegister.setOnClickListener{
-//            val intent = Intent(this, LoginActivity::class.java)
-//            startActivity(intent)
-//            Toast.makeText(applicationContext, "Pendaftaran berhasil", Toast.LENGTH_SHORT).show()
-            register()
+            val nama = etNama.text.toString()
+            val uname = etUsername.text.toString()
+            val email = etEmail.text.toString()
+            val alamat = etAlamat.text.toString()
+            val notelp = etNoTelp.text.toString()
+            val password = etPassword.text.toString()
+            val password2 = etPassword2.text.toString()
+
+            if(nama.isEmpty() &&
+                uname.isEmpty() &&
+                email.isEmpty() &&
+                alamat.isEmpty() &&
+                password.isEmpty() &&
+                password2.isEmpty()
+            ) {
+                Toast.makeText(applicationContext,"Form harus diisi dengan lengkap", Toast.LENGTH_SHORT).show()
+            } else if (nama.isEmpty()) {
+                etNama.error = "Nama lengkap tidak boleh kosong"
+            } else if (nama.isEmpty()) {
+                etUsername.error = "Username tidak boleh kosong"
+            } else if (email.isEmpty()) {
+                etEmail.error = "Email tidak boleh kosong"
+            } else if (notelp.isEmpty()) {
+                etNoTelp.error = "No. Telepon tidak boleh kosong"
+            } else if (alamat.isEmpty()) {
+                etAlamat.error = "ALamat tidak boleh kosong"
+            } else if (password.isEmpty()) {
+                Toast.makeText(applicationContext,"Password tidak boleh kosong", Toast.LENGTH_SHORT).show()
+            } else if (password2.isEmpty()) {
+                Toast.makeText(applicationContext,"Konfirmasi Password tidak boleh kosong", Toast.LENGTH_SHORT).show()
+            } else if (password != password2) {
+                Toast.makeText(applicationContext,"Konfirmasi Password tidak cocok", Toast.LENGTH_SHORT).show()
+            } else {
+                register()
+                Toast.makeText(applicationContext,"Pendaftaran berhasil", Toast.LENGTH_SHORT).show()
+                finish()
+            }
         }
         btnLogin.setOnClickListener{
             val intent = Intent(this, LoginActivity::class.java)

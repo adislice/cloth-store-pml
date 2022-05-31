@@ -10,6 +10,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.bumptech.glide.load.resource.drawable.DrawableTransitionOptions
 import com.uty.clothstore.DetailProdukActivity
+import com.uty.clothstore.MyApplication
 import com.uty.clothstore.R
 import com.uty.clothstore.model.*
 import java.text.NumberFormat
@@ -47,10 +48,11 @@ class HomeRVAdapter(private val dataSet: ArrayList<HomeRVModel>) :
 
     // Replace the contents of a view (invoked by the layout manager)
     override fun onBindViewHolder(viewHolder: ViewHolder, position: Int) {
-        val produkGambar: String = dataSet[position].produkGambar
+        val produkId: Int = dataSet[position].id_produk
+        val produkGambar: String = dataSet[position].gambar.toString()
 
-        viewHolder.produk_judul.text = dataSet[position].produkJudul
-        viewHolder.produk_harga.text = rupiah(dataSet[position].produkHarga)
+        viewHolder.produk_judul.text = dataSet[position].nama_produk
+        viewHolder.produk_harga.text = rupiah(dataSet[position].harga)
 
         Glide.with(viewHolder.itemView.context)
             .load(produkGambar)
@@ -61,9 +63,8 @@ class HomeRVAdapter(private val dataSet: ArrayList<HomeRVModel>) :
         viewHolder.itemView.setOnClickListener{
             val context = viewHolder.itemView.context
             val intent = Intent(context, DetailProdukActivity::class.java)
-//            intent.putExtra()
-//            intent.putExtra()
-//            intent.putExtra()
+            intent.putExtra("id_produk", produkId)
+            intent.putExtra("id_user", MyApplication.id_user)
             context.startActivity(intent)
         }
 

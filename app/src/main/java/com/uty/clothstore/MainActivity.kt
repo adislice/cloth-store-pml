@@ -3,8 +3,6 @@ package com.uty.clothstore
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.widget.Button
-import android.widget.ImageButton
 import androidx.fragment.app.Fragment
 import com.google.android.material.appbar.MaterialToolbar
 import com.google.android.material.bottomnavigation.BottomNavigationView
@@ -17,12 +15,12 @@ class MainActivity : AppCompatActivity() {
         setContentView(R.layout.activity_main)
 
 //        var menuKeranjang = findViewById<ImageButton>(R.id.menu_keranjang)
-        var bott_nav = findViewById<BottomNavigationView>(R.id.bottom_nav)
-        var fm = supportFragmentManager
+        val bott_nav = findViewById<BottomNavigationView>(R.id.bottom_nav)
+        val fm = supportFragmentManager
 
         if (savedInstanceState == null) {
-            var t = fm.beginTransaction()
-            var fragme = HomeFragment()
+            val t = fm.beginTransaction()
+            val fragme = HomeFragment()
             t.replace(R.id.content_frame, fragme).commit()
             bott_nav.menu.findItem(R.id.menu_home).isChecked = true
         } else {
@@ -32,19 +30,19 @@ class MainActivity : AppCompatActivity() {
 
             when (item.itemId) {
                 R.id.menu_home -> {
-                    var fragme = HomeFragment()
+                    val fragme = HomeFragment()
                     fm.beginTransaction()
                         .replace(R.id.content_frame, fragme)
                         .commit()
                 }
                 R.id.menu_produk -> {
-                    var fragme = DaftarProdukFragment()
+                    val fragme = DaftarProdukFragment()
                     fm.beginTransaction()
                         .replace(R.id.content_frame, fragme)
                         .commit()
                 }
                 R.id.menu_profil -> {
-                    var fragme = ProfileFragment()
+                    val fragme = ProfileFragment()
                     fm.beginTransaction()
                         .replace(R.id.content_frame, fragme)
                         .commit()

@@ -12,6 +12,5 @@ data class DaftarProdukModel(
     @SerializedName("diskon_persen") val diskon_persen: Int?,
     @SerializedName("gambar") val gambar: String?,
     @SerializedName("deskripsi") val deskripsi: String?
-
 )
 
