@@ -1,5 +1,6 @@
 package com.uty.clothstore
 
+import android.annotation.SuppressLint
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
@@ -14,7 +15,6 @@ import com.uty.clothstore.model.ResponseModel
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
-import retrofit2.http.FormUrlEncoded
 import java.text.NumberFormat
 import java.util.*
 
@@ -56,11 +56,11 @@ class DetailProdukActivity : AppCompatActivity() {
         tvDeskripsiProduk = findViewById(R.id.detail_produk_deskripsi)
         loadingDetail = findViewById(R.id.loading_detail_produk)
 
-        val id_user = intent.getIntExtra("id_user", 0)
+//        val id_user = intent.getIntExtra("id_user", 0)
 
-        val id_produk = intent.getIntExtra("id_produk", 1)
+        val idProduk = intent.getIntExtra("id_produk", 1)
 
-        retrieveDetailProduk(id_produk)
+        retrieveDetailProduk(idProduk)
 
         // INTERAKSI QUANTITY
         qty = etQty.text.toString().toInt()
@@ -94,6 +94,13 @@ class DetailProdukActivity : AppCompatActivity() {
         }
     }
     private fun retrieveDetailProduk(id_produk: Int){
+        imgProduk.visibility = View.GONE
+        tvJudulProduk.visibility = View.GONE
+        tvDiskonProduk.visibility = View.GONE
+        tvKategoriProduk.visibility = View.GONE
+        tvHargaAsliProduk.visibility = View.GONE
+        tvHargaFinalProduk.visibility = View.GONE
+        tvDeskripsiProduk.visibility = View.GONE
         loadingDetail.visibility = View.VISIBLE
         val ardData = RetrofitServer.getConnection()!!.create(APIRequestData::class.java)
         val tampilProduk = ardData.produk_tampil_data(id_produk)
@@ -105,16 +112,26 @@ class DetailProdukActivity : AppCompatActivity() {
                 TODO("Not yet implemented")
             }
 
+            @SuppressLint("SetTextI18n")
             override fun onResponse(
                 call: Call<ResponseModel<ProdukModel>>,
                 response: Response<ResponseModel<ProdukModel>>
             ) {
                 when(response.code()){
                     200 -> {
+                        val diskonnya: Int
                         val img = response.body()!!.records!![0].gambar
-                        val diskonPersen = response.body()!!.records!![0].diskon_persen
                         val hargaAsli = response.body()!!.records!![0].harga
-
+                        val diskonPersen = response.body()!!.records!![0].diskon_persen
+                        if(diskonPersen == 0){
+                            tvDiskonProduk.visibility = View.GONE
+                            tvHargaAsliProduk.visibility = View.GONE
+                            tvHargaFinalProduk.text = rupiah(hargaAsli)
+                        } else {
+                            diskonnya = (diskonPersen!!/100)*hargaAsli
+                            val hargaFinal = hargaAsli - diskonnya
+                            tvHargaFinalProduk.text = rupiah(hargaFinal)
+                        }
                         Glide.with(this@DetailProdukActivity)
                             .load(img)
                             .transition(DrawableTransitionOptions.withCrossFade())
@@ -122,13 +139,19 @@ class DetailProdukActivity : AppCompatActivity() {
                             .into(imgProduk)
 
                         tvJudulProduk.text = response.body()!!.records!![0].nama_produk
-                        tvDiskonProduk.text = diskonPersen.toString()
+                        tvDiskonProduk.text = "$diskonPersen%"
                         tvKategoriProduk.text = response.body()!!.records!![0].nama_kategori
-                        tvHargaAsliProduk.text = hargaAsli.toString()
-                        tvHargaFinalProduk.text = rupiah(hargaAsli - (100/ diskonPersen!!))
+                        tvHargaAsliProduk.text = rupiah(hargaAsli)
                         tvDeskripsiProduk.text = response.body()!!.records!![0].deskripsi
                     }
                 }
+                imgProduk.visibility = View.VISIBLE
+                tvJudulProduk.visibility = View.VISIBLE
+                tvDiskonProduk.visibility = View.VISIBLE
+                tvKategoriProduk.visibility = View.VISIBLE
+                tvHargaAsliProduk.visibility = View.VISIBLE
+                tvHargaFinalProduk.visibility = View.VISIBLE
+                tvDeskripsiProduk.visibility = View.VISIBLE
                 loadingDetail.visibility = View.GONE
             }
         })

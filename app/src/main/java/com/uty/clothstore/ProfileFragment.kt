@@ -5,6 +5,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
+import android.widget.Toast
 import androidx.fragment.app.Fragment
 import com.uty.clothstore.API.APIRequestData
 import com.uty.clothstore.API.RetrofitServer
@@ -20,6 +21,7 @@ class ProfileFragment : Fragment() {
     private lateinit var tvEmail: TextView
     private lateinit var tvAlamat: TextView
     private lateinit var tvNoTelp: TextView
+    private lateinit var loadingDetail: View
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -32,13 +34,15 @@ class ProfileFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        val fm = requireActivity().supportFragmentManager
+//        val fm = requireActivity().supportFragmentManager
         tvNama = view.findViewById(R.id.profile_nama)
         tvUsername = view.findViewById(R.id.profile_username)
         tvEmail = view.findViewById(R.id.profile_email)
         tvNoTelp = view.findViewById(R.id.profile_no_telp)
         tvAlamat = view.findViewById(R.id.profile_alamat)
-        lihat_profil()
+        loadingDetail = view.findViewById(R.id.loading_profil)
+
+        lihatProfil()
 //        val btn = view.findViewById<Button>(R.id.tombol)
 //        val promo = view.findViewById<TextView>(R.id.promo_code)
 //
@@ -51,9 +55,15 @@ class ProfileFragment : Fragment() {
 //        }
     }
 
-    fun lihat_profil(){
-        var ardData = RetrofitServer.getConnection()!!.create(APIRequestData::class.java)
-        var userData = ardData.user_tampil_data(MyApplication.id_user)
+    private fun lihatProfil(){
+        tvNama.visibility = View.GONE
+        tvUsername.visibility = View.GONE
+        tvEmail.visibility = View.GONE
+        tvNoTelp.visibility = View.GONE
+        tvAlamat.visibility = View.GONE
+        loadingDetail.visibility = View.VISIBLE
+        val ardData = RetrofitServer.getConnection()!!.create(APIRequestData::class.java)
+        val userData = ardData.user_tampil_data(MyApplication.id_user)
         userData.enqueue(object : Callback<ResponseModel<UserModel>> {
             override fun onResponse(
                 call: Call<ResponseModel<UserModel>>,
@@ -68,10 +78,17 @@ class ProfileFragment : Fragment() {
                         tvAlamat.text = response.body()!!.records!![0].alamat
                     }
                 }
+                tvNama.visibility = View.VISIBLE
+                tvUsername.visibility = View.VISIBLE
+                tvEmail.visibility = View.VISIBLE
+                tvNoTelp.visibility = View.VISIBLE
+                tvAlamat.visibility = View.VISIBLE
+                loadingDetail.visibility = View.GONE
             }
 
             override fun onFailure(call: Call<ResponseModel<UserModel>>, t: Throwable) {
-                TODO("Not yet implemented")
+                Toast.makeText(view?.context, "Gagal meload profil", Toast.LENGTH_LONG).show()
+                loadingDetail.visibility = View.GONE
             }
 
         })

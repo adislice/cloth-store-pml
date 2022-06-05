@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.core.widget.NestedScrollView
+<androidx.constraintlayout.widget.ConstraintLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
@@ -8,147 +8,150 @@
     tools:context=".ProfileFragment">
 
     <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/profil_bagian_atas"
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="wrap_content"
+        android:background="@drawable/bg_gradient_profile"
+        android:paddingTop="@dimen/pad_lg"
+        android:paddingBottom="@dimen/pad_2xl"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
 
-        <androidx.constraintlayout.widget.ConstraintLayout
-            android:id="@+id/profil_bagian_atas"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:background="@drawable/bg_gradient_profile"
-            android:paddingTop="@dimen/pad_lg"
-            android:paddingBottom="@dimen/pad_2xl"
+        <de.hdodenhof.circleimageview.CircleImageView
+            android:id="@+id/profile_gambar_user"
+            android:layout_width="96dp"
+            android:layout_height="96dp"
+            android:contentDescription="Ini adalah gambar profil user"
+            android:src="@drawable/user"
+            app:civ_border_color="#FFFFFF"
+            app:civ_border_width="2dp"
+            app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent">
-
-            <de.hdodenhof.circleimageview.CircleImageView
-                android:id="@+id/profile_gambar_user"
-                android:layout_width="96dp"
-                android:layout_height="96dp"
-                android:src="@drawable/user"
-                app:civ_border_color="#FFFFFF"
-                app:civ_border_width="2dp"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
-
-            <LinearLayout
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:orientation="vertical"
-                android:gravity="center"
-                android:layout_marginTop="@dimen/pad_xl"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/profile_gambar_user">
-
-                <TextView
-                    android:id="@+id/profile_nama"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Nama lengkap user"
-                    android:fontFamily="@font/montserrat_bold"
-                    android:textColor="@color/white"/>
-
-                <TextView
-                    android:id="@+id/profile_username"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:fontFamily="@font/montserrat"
-                    android:textColor="@color/white"
-                    android:text="username" />
-
-            </LinearLayout>
-
-        </androidx.constraintlayout.widget.ConstraintLayout>
+            app:layout_constraintTop_toTopOf="parent" />
 
         <LinearLayout
-            android:layout_width="match_parent"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/pad_xl"
+            android:gravity="center"
             android:orientation="vertical"
-            android:layout_marginTop="@dimen/pad_lg"
-            android:layout_marginStart="@dimen/pad_lg"
-            android:layout_marginEnd="@dimen/pad_lg"
+            app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/profil_bagian_atas">
+            app:layout_constraintTop_toBottomOf="@+id/profile_gambar_user">
 
-
-            <LinearLayout
-                android:layout_width="match_parent"
+            <TextView
+                android:id="@+id/profile_nama"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:orientation="vertical"
-                android:layout_marginBottom="@dimen/pad_lg">
+                android:contentDescription="Nama lengkap user"
+                android:fontFamily="@font/montserrat_bold"
+                android:textColor="@color/white" />
 
-                <TextView
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="Email"
-                    android:fontFamily="@font/montserrat"
-                    android:textColor="@color/blue_500"/>
-
-                <TextView
-                    android:id="@+id/profile_email"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="johndoe@gmail.com"
-                    android:fontFamily="@font/montserrat"
-                    android:textSize="@dimen/pad_t_md"/>
-
-            </LinearLayout>
-
-            <LinearLayout
-                android:layout_width="match_parent"
+            <TextView
+                android:id="@+id/profile_username"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:orientation="vertical"
-                android:layout_marginBottom="@dimen/pad_lg">
-
-                <TextView
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="Nomor Telepon"
-                    android:fontFamily="@font/montserrat"
-                    android:textColor="@color/blue_500"/>
-
-                <TextView
-                    android:id="@+id/profile_no_telp"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="08123456789"
-                    android:fontFamily="@font/montserrat"
-                    android:textSize="@dimen/pad_t_md"/>
-
-            </LinearLayout>
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="vertical"
-                android:layout_marginBottom="@dimen/pad_lg">
-
-                <TextView
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="Alamat"
-                    android:fontFamily="@font/montserrat"
-                    android:textColor="@color/blue_500"/>
-
-                <TextView
-                    android:id="@+id/profile_alamat"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:maxLines="2"
-                    android:text="Jl Hayam Wuruk HWI Lindeteves Bldg Bl B/22, Dki Jakarta"
-                    android:fontFamily="@font/montserrat"
-                    android:textSize="@dimen/pad_t_md"/>
-
-            </LinearLayout>
-
+                android:contentDescription="username"
+                android:fontFamily="@font/montserrat"
+                android:textColor="@color/white" />
 
         </LinearLayout>
 
     </androidx.constraintlayout.widget.ConstraintLayout>
-</androidx.core.widget.NestedScrollView>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/pad_lg"
+        android:layout_marginTop="@dimen/pad_lg"
+        android:layout_marginEnd="@dimen/pad_lg"
+        android:orientation="vertical"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/profil_bagian_atas">
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="@dimen/pad_lg"
+            android:orientation="vertical">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/montserrat"
+                android:text="Email"
+                android:textColor="@color/blue_500" />
+
+            <TextView
+                android:id="@+id/profile_email"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:contentDescription="Email user"
+                android:fontFamily="@font/montserrat"
+                android:textSize="@dimen/pad_t_md" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="@dimen/pad_lg"
+            android:orientation="vertical">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/montserrat"
+                android:text="Nomor Telepon"
+                android:textColor="@color/blue_500" />
+
+            <TextView
+                android:id="@+id/profile_no_telp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:contentDescription="Nomor telepon user"
+                android:fontFamily="@font/montserrat"
+                android:textSize="@dimen/pad_t_md" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="@dimen/pad_lg"
+            android:orientation="vertical">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/montserrat"
+                android:text="Alamat"
+                android:textColor="@color/blue_500" />
+
+            <TextView
+                android:id="@+id/profile_alamat"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:contentDescription="Alamat user"
+                android:fontFamily="@font/montserrat"
+                android:maxLines="2"
+                android:textSize="@dimen/pad_t_md" />
+
+        </LinearLayout>
+
+
+    </LinearLayout>
+
+    <include
+        android:id="@+id/loading_profil"
+        layout="@layout/layout_loading"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:visibility="gone" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
