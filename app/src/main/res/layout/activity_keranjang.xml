@@ -29,6 +29,7 @@
         app:layout_constraintStart_toStartOf="parent">
 
         <TextView
+            android:id="@+id/keranjang_total"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Rp. 50000"
@@ -59,4 +60,8 @@
             android:layout_margin="@dimen/pad_md"/>
 
     </androidx.constraintlayout.widget.ConstraintLayout>
+    <include
+        android:id="@+id/loading_keranjang"
+        android:visibility="visible"
+        layout="@layout/layout_loading"/>
 </androidx.constraintlayout.widget.ConstraintLayout>

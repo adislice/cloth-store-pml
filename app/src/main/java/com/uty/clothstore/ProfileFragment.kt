@@ -1,9 +1,13 @@
 package com.uty.clothstore
 
+import android.content.Context
+import android.content.Intent
+import android.content.SharedPreferences
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Button
 import android.widget.TextView
 import android.widget.Toast
 import androidx.fragment.app.Fragment
@@ -21,7 +25,8 @@ class ProfileFragment : Fragment() {
     private lateinit var tvEmail: TextView
     private lateinit var tvAlamat: TextView
     private lateinit var tvNoTelp: TextView
-    private lateinit var loadingDetail: View
+    private lateinit var loadingProfil: View
+    private lateinit var btnLogout: Button
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -40,7 +45,11 @@ class ProfileFragment : Fragment() {
         tvEmail = view.findViewById(R.id.profile_email)
         tvNoTelp = view.findViewById(R.id.profile_no_telp)
         tvAlamat = view.findViewById(R.id.profile_alamat)
-        loadingDetail = view.findViewById(R.id.loading_profil)
+        loadingProfil = view.findViewById(R.id.loading_profil)
+        btnLogout = view.findViewById(R.id.profile_logout)
+        val sharedPref =  requireContext().getSharedPreferences("app_data", Context.MODE_PRIVATE)
+
+
 
         lihatProfil()
 //        val btn = view.findViewById<Button>(R.id.tombol)
@@ -53,6 +62,14 @@ class ProfileFragment : Fragment() {
 //                .replace(R.id.content_frame, fragme)
 //                .commit()
 //        }
+        btnLogout.setOnClickListener {
+            loadingProfil.visibility = View.VISIBLE
+            sharedPref.edit().clear().apply()
+            loadingProfil.visibility = View.GONE
+            val i = Intent(requireContext(), LandingActivity::class.java)
+            startActivity(i)
+            requireActivity().finish()
+        }
     }
 
     private fun lihatProfil(){
@@ -61,7 +78,7 @@ class ProfileFragment : Fragment() {
         tvEmail.visibility = View.GONE
         tvNoTelp.visibility = View.GONE
         tvAlamat.visibility = View.GONE
-        loadingDetail.visibility = View.VISIBLE
+        loadingProfil.visibility = View.VISIBLE
         val ardData = RetrofitServer.getConnection()!!.create(APIRequestData::class.java)
         val userData = ardData.user_tampil_data(MyApplication.id_user)
         userData.enqueue(object : Callback<ResponseModel<UserModel>> {
@@ -83,12 +100,12 @@ class ProfileFragment : Fragment() {
                 tvEmail.visibility = View.VISIBLE
                 tvNoTelp.visibility = View.VISIBLE
                 tvAlamat.visibility = View.VISIBLE
-                loadingDetail.visibility = View.GONE
+                loadingProfil.visibility = View.GONE
             }
 
             override fun onFailure(call: Call<ResponseModel<UserModel>>, t: Throwable) {
                 Toast.makeText(view?.context, "Gagal meload profil", Toast.LENGTH_LONG).show()
-                loadingDetail.visibility = View.GONE
+                loadingProfil.visibility = View.GONE
             }
 
         })

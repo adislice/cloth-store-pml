@@ -33,6 +33,16 @@ class LoginActivity : AppCompatActivity() {
         supportActionBar?.hide()
 
         sharedPref =  getSharedPreferences("app_data", Context.MODE_PRIVATE)
+        if (sharedPref.contains("id_user")) {
+            val id_user = sharedPref.getInt("id_user", 0)
+            if (id_user != 0){
+                MyApplication.id_user = id_user
+                val intent = Intent(this, MainActivity::class.java)
+                intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP)
+                startActivity(intent)
+                finish()
+            }
+        }
 
         btnLogin = findViewById(R.id.login_btn_login)
         btnRegister = findViewById(R.id.login_btn_register)
@@ -68,7 +78,9 @@ class LoginActivity : AppCompatActivity() {
                             apply()
                         }
                         val intent = Intent(this@LoginActivity, MainActivity::class.java)
+                        finishAffinity()
                         startActivity(intent)
+                        finish()
                     }
                     404 -> {
                         Toast.makeText(this@LoginActivity, "Login gagal", Toast.LENGTH_LONG).show()

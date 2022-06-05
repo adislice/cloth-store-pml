@@ -13,7 +13,7 @@ import com.google.gson.Gson
 import com.google.gson.reflect.TypeToken
 import com.uty.clothstore.API.APIRequestData
 import com.uty.clothstore.API.RetrofitServer
-import com.uty.clothstore.Model.KeranjangItemModel
+import com.uty.clothstore.model.KeranjangItemModel
 import com.uty.clothstore.model.ProdukModel
 import com.uty.clothstore.model.ResponseModel
 import retrofit2.Call
@@ -89,31 +89,7 @@ class DetailProdukActivity : AppCompatActivity() {
             // intent.putExtra("id_user", id_user)
             startActivity(intent)
         }
-        btnTambahKeranjang.setOnClickListener{
-//            val intent = Intent(this, KeranjangActivity::class.java)
-//            Toast.makeText(applicationContext, "kuantitas : " + etQty.text.toString().toInt(), Toast.LENGTH_SHORT).show()
-//            if (kategori == "obat") {
-//                tambahObatKeKeranjang(id_user, idobat, etqty.text.toString().toInt())
-//            }
-//            startActivity(intent)
 
-
-            val qty = Integer.parseInt(etQty.text.toString())
-            val gson = Gson()
-            var list = ArrayList<KeranjangItemModel>()
-            list.add(KeranjangItemModel(idProduk, qty))
-            val json = gson.toJson(list)//converting list to Json
-            val sharedPref =  getSharedPreferences("app_data", Context.MODE_PRIVATE)
-            with(sharedPref.edit()) {
-                putString("keranjang", json)
-                apply()
-            }
-
-            val json2 = sharedPref.getString("keranjang",null)
-            val type = object : TypeToken<ArrayList<KeranjangItemModel>>(){}.type
-            val readd = gson.fromJson<ArrayList<KeranjangItemModel>>(json2,type)
-            Toast.makeText(this, "id: "+readd[0].id_produk+", qty:"+readd[0].qty, Toast.LENGTH_LONG).show()
-        }
     }
     private fun retrieveDetailProduk(id_produk: Int){
         imgProduk.visibility = View.GONE
@@ -144,11 +120,13 @@ class DetailProdukActivity : AppCompatActivity() {
                         val img = response.body()!!.records!![0].gambar
                         val hargaAsli:Int = response.body()!!.records!![0].harga
                         val diskonPersen:Int = response.body()!!.records!![0].diskon_persen
+                        var hargaStlhDiskon: Double
                         if(diskonPersen == 0){
                             tvDiskonProduk.visibility = View.GONE
                             tvHargaAsliProduk.visibility = View.GONE
                             tvHargaFinalProduk.text = rupiah(hargaAsli)
                             tvHargaFinalProduk.visibility = View.VISIBLE
+                            hargaStlhDiskon = hargaAsli.toDouble()
                         } else {
                             diskonnya = diskonPersen.toDouble()/100
                             val hargaFinal = hargaAsli - (hargaAsli*diskonnya)
@@ -159,6 +137,7 @@ class DetailProdukActivity : AppCompatActivity() {
                             tvDiskonProduk.visibility = View.VISIBLE
                             tvHargaAsliProduk.visibility = View.VISIBLE
                             tvHargaFinalProduk.visibility = View.VISIBLE
+                            hargaStlhDiskon = hargaFinal
                         }
                         Glide.with(this@DetailProdukActivity)
                             .load(img)
@@ -170,7 +149,10 @@ class DetailProdukActivity : AppCompatActivity() {
                         tvKategoriProduk.text = response.body()!!.records!![0].nama_kategori
                         tvDeskripsiProduk.text = response.body()!!.records!![0].deskripsi
 
-
+                        btnTambahKeranjang.setOnClickListener{
+                            val qty = Integer.parseInt(etQty.text.toString())
+                            MyApplication.addToCart(this@DetailProdukActivity, id_produk, qty, hargaStlhDiskon)
+                        }
                     }
                 }
                 imgProduk.visibility = View.VISIBLE

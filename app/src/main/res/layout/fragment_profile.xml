@@ -146,6 +146,15 @@
 
 
     </LinearLayout>
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/profile_logout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:backgroundTint="@color/red_disc"
+        android:text="LOGOUT"
+        android:layout_margin="20dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"/>
 
     <include
         android:id="@+id/loading_profil"

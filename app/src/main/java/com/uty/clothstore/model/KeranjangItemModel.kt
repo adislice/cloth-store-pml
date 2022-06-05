@@ -1,3 +1,3 @@
-package com.uty.clothstore.Model
+package com.uty.clothstore.model
 
-data class KeranjangItemModel (val id_produk: Int, val qty: Int)
+data class KeranjangItemModel (val id_produk: Int, var qty: Int)

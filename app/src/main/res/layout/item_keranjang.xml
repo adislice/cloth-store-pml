@@ -31,7 +31,8 @@
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:orientation="vertical">
+                android:orientation="vertical"
+                android:layout_weight="1">
 
                 <TextView
                     android:id="@+id/keranjang_nama_produk"
@@ -75,7 +76,18 @@
                     android:fontFamily="@font/montserrat_regular"
                     android:textSize="12sp"/>
 
+
             </LinearLayout>
+
+            <ImageButton
+                android:id="@+id/keranjang_hapus_item"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:background="@color/white"
+                android:src="@drawable/ic_delete"
+                app:tint="@color/red_disc"
+                android:layout_gravity="bottom"/>
+
 
         </LinearLayout>
 
