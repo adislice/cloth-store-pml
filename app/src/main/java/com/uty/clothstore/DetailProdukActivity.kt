@@ -1,6 +1,7 @@
 package com.uty.clothstore
 
 import android.annotation.SuppressLint
+import android.content.Context
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
@@ -8,13 +9,17 @@ import android.view.View
 import android.widget.*
 import com.bumptech.glide.Glide
 import com.bumptech.glide.load.resource.drawable.DrawableTransitionOptions
+import com.google.gson.Gson
+import com.google.gson.reflect.TypeToken
 import com.uty.clothstore.API.APIRequestData
 import com.uty.clothstore.API.RetrofitServer
+import com.uty.clothstore.Model.KeranjangItemModel
 import com.uty.clothstore.model.ProdukModel
 import com.uty.clothstore.model.ResponseModel
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
+import java.lang.reflect.Type
 import java.text.NumberFormat
 import java.util.*
 
@@ -85,12 +90,29 @@ class DetailProdukActivity : AppCompatActivity() {
             startActivity(intent)
         }
         btnTambahKeranjang.setOnClickListener{
-            val intent = Intent(this, KeranjangActivity::class.java)
+//            val intent = Intent(this, KeranjangActivity::class.java)
 //            Toast.makeText(applicationContext, "kuantitas : " + etQty.text.toString().toInt(), Toast.LENGTH_SHORT).show()
 //            if (kategori == "obat") {
 //                tambahObatKeKeranjang(id_user, idobat, etqty.text.toString().toInt())
 //            }
-            startActivity(intent)
+//            startActivity(intent)
+
+
+            val qty = Integer.parseInt(etQty.text.toString())
+            val gson = Gson()
+            var list = ArrayList<KeranjangItemModel>()
+            list.add(KeranjangItemModel(idProduk, qty))
+            val json = gson.toJson(list)//converting list to Json
+            val sharedPref =  getSharedPreferences("app_data", Context.MODE_PRIVATE)
+            with(sharedPref.edit()) {
+                putString("keranjang", json)
+                apply()
+            }
+
+            val json2 = sharedPref.getString("keranjang",null)
+            val type = object : TypeToken<ArrayList<KeranjangItemModel>>(){}.type
+            val readd = gson.fromJson<ArrayList<KeranjangItemModel>>(json2,type)
+            Toast.makeText(this, "id: "+readd[0].id_produk+", qty:"+readd[0].qty, Toast.LENGTH_LONG).show()
         }
     }
     private fun retrieveDetailProduk(id_produk: Int){
@@ -147,6 +169,8 @@ class DetailProdukActivity : AppCompatActivity() {
                         tvJudulProduk.text = response.body()!!.records!![0].nama_produk
                         tvKategoriProduk.text = response.body()!!.records!![0].nama_kategori
                         tvDeskripsiProduk.text = response.body()!!.records!![0].deskripsi
+
+
                     }
                 }
                 imgProduk.visibility = View.VISIBLE

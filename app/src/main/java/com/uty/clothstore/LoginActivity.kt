@@ -1,6 +1,8 @@
 package com.uty.clothstore
 
+import android.content.Context
 import android.content.Intent
+import android.content.SharedPreferences
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
@@ -22,13 +24,15 @@ class LoginActivity : AppCompatActivity() {
     private lateinit var etUsername: EditText
     private lateinit var etPassword: EditText
     private lateinit var loadingLogin: View
+    private lateinit var sharedPref: SharedPreferences
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_login)
 
-
         supportActionBar?.hide()
+
+        sharedPref =  getSharedPreferences("app_data", Context.MODE_PRIVATE)
 
         btnLogin = findViewById(R.id.login_btn_login)
         btnRegister = findViewById(R.id.login_btn_register)
@@ -36,7 +40,7 @@ class LoginActivity : AppCompatActivity() {
         etPassword = findViewById(R.id.et_log_password)
         loadingLogin = findViewById(R.id.loading_login)
         btnLogin.setOnClickListener{
-//
+//          if
             login()
 
         }
@@ -57,7 +61,12 @@ class LoginActivity : AppCompatActivity() {
                 when(response.code()){
                     200 -> {
                         Toast.makeText(this@LoginActivity, response.body()!!.message, Toast.LENGTH_LONG).show()
-                        MyApplication.id_user = response.body()!!.records!![0].id_user
+                        val id_user =  response.body()!!.records!![0].id_user
+                        MyApplication.id_user = id_user
+                        with(sharedPref.edit()) {
+                            putInt("id_user", id_user)
+                            apply()
+                        }
                         val intent = Intent(this@LoginActivity, MainActivity::class.java)
                         startActivity(intent)
                     }
