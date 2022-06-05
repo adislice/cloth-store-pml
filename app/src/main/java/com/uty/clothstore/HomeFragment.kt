@@ -41,12 +41,14 @@ class HomeFragment : Fragment() {
 
         bannerList.add(
             HomeRVBannerModel(
-                "https://ksufmvei.sirv.com/cloth-store/banner/banner_1.jpg"
+                "https://ksufmvei.sirv.com/cloth-store/banner/banner_1.jpg",
+                "https://www.tokopedia.com/"
             )
         )
         bannerList.add(
             HomeRVBannerModel(
-                "https://ksufmvei.sirv.com/cloth-store/banner/banner_2.jpg"
+                "https://ksufmvei.sirv.com/cloth-store/banner/banner_2.jpg",
+                "https://www.tokopedia.com/"
             )
         )
         bannerAdapter = HomeRVBannerAdapter(bannerList)

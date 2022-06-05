@@ -1,6 +1,7 @@
 package com.uty.clothstore.adapter
 
 import android.content.Intent
+import android.net.Uri
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -44,6 +45,7 @@ class HomeRVBannerAdapter(private val dataSet: ArrayList<HomeRVBannerModel>) :
     // Replace the contents of a view (invoked by the layout manager)
     override fun onBindViewHolder(viewHolder: ViewHolder, position: Int) {
         val produkGambar: String = dataSet[position].fotoBanner
+        val Link: String = dataSet[position].urlLink
 
         Glide.with(viewHolder.itemView.context)
             .load(produkGambar)
@@ -53,10 +55,8 @@ class HomeRVBannerAdapter(private val dataSet: ArrayList<HomeRVBannerModel>) :
 
         viewHolder.itemView.setOnClickListener{
             val context = viewHolder.itemView.context
-            val intent = Intent(context, DetailProdukActivity::class.java)
-//            intent.putExtra()
-//            intent.putExtra()
-//            intent.putExtra()
+            val intent = Intent(Intent.ACTION_VIEW)
+            intent.data = Uri.parse(Link)
             context.startActivity(intent)
         }
 

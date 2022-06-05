@@ -37,7 +37,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:fontFamily="@font/montserrat_bold"
-                        android:contentDescription="Ini adalah judul di appbar"
+                        android:text="Detail Produk"
                         android:textColor="@color/main_text"
                         app:layout_constraintBottom_toBottomOf="parent"
                         app:layout_constraintEnd_toStartOf="@+id/detail_produk_keranjang"

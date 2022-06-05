@@ -109,7 +109,6 @@ class DetailProdukActivity : AppCompatActivity() {
             override fun onFailure(call: Call<ResponseModel<ProdukModel>>, t: Throwable) {
                 Toast.makeText(this@DetailProdukActivity, "Gagal meload produk", Toast.LENGTH_LONG).show()
                 loadingDetail.visibility = View.GONE
-                TODO("Not yet implemented")
             }
 
             @SuppressLint("SetTextI18n")
@@ -119,18 +118,25 @@ class DetailProdukActivity : AppCompatActivity() {
             ) {
                 when(response.code()){
                     200 -> {
-                        val diskonnya: Int
+                        val diskonnya: Double
                         val img = response.body()!!.records!![0].gambar
-                        val hargaAsli = response.body()!!.records!![0].harga
-                        val diskonPersen = response.body()!!.records!![0].diskon_persen
+                        val hargaAsli:Int = response.body()!!.records!![0].harga
+                        val diskonPersen:Int = response.body()!!.records!![0].diskon_persen
                         if(diskonPersen == 0){
                             tvDiskonProduk.visibility = View.GONE
                             tvHargaAsliProduk.visibility = View.GONE
                             tvHargaFinalProduk.text = rupiah(hargaAsli)
+                            tvHargaFinalProduk.visibility = View.VISIBLE
                         } else {
-                            diskonnya = (diskonPersen!!/100)*hargaAsli
-                            val hargaFinal = hargaAsli - diskonnya
-                            tvHargaFinalProduk.text = rupiah(hargaFinal)
+                            diskonnya = diskonPersen.toDouble()/100
+                            val hargaFinal = hargaAsli - (hargaAsli*diskonnya)
+                            tvDiskonProduk.text = "$diskonPersen%"
+                            tvHargaAsliProduk.text = rupiah(hargaAsli)
+                            tvHargaFinalProduk.text = rupiah(hargaFinal.toInt())
+
+                            tvDiskonProduk.visibility = View.VISIBLE
+                            tvHargaAsliProduk.visibility = View.VISIBLE
+                            tvHargaFinalProduk.visibility = View.VISIBLE
                         }
                         Glide.with(this@DetailProdukActivity)
                             .load(img)
@@ -139,18 +145,13 @@ class DetailProdukActivity : AppCompatActivity() {
                             .into(imgProduk)
 
                         tvJudulProduk.text = response.body()!!.records!![0].nama_produk
-                        tvDiskonProduk.text = "$diskonPersen%"
                         tvKategoriProduk.text = response.body()!!.records!![0].nama_kategori
-                        tvHargaAsliProduk.text = rupiah(hargaAsli)
                         tvDeskripsiProduk.text = response.body()!!.records!![0].deskripsi
                     }
                 }
                 imgProduk.visibility = View.VISIBLE
                 tvJudulProduk.visibility = View.VISIBLE
-                tvDiskonProduk.visibility = View.VISIBLE
                 tvKategoriProduk.visibility = View.VISIBLE
-                tvHargaAsliProduk.visibility = View.VISIBLE
-                tvHargaFinalProduk.visibility = View.VISIBLE
                 tvDeskripsiProduk.visibility = View.VISIBLE
                 loadingDetail.visibility = View.GONE
             }
