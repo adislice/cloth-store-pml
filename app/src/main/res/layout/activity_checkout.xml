@@ -4,6 +4,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/white"
     tools:context=".CheckoutActivity">
 
     <androidx.coordinatorlayout.widget.CoordinatorLayout
@@ -82,201 +83,154 @@
                 android:layout_height="match_parent"
                 tools:context=".CheckoutActivity">
 
-                <LinearLayout
-                    android:id="@+id/checkout_produk"
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:id="@+id/checkout_detail"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:orientation="vertical"
+                    android:layout_height="match_parent"
+                    android:background="@color/white"
+                    android:padding="@dimen/pad_md"
+                    app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="parent"
-                    android:background="@color/white"
-                    android:padding="@dimen/pad_md">
+                    app:layout_constraintTop_toTopOf="parent">
 
-                    <androidx.recyclerview.widget.RecyclerView
-                        android:id="@+id/rv_checkout_produk"
+                    <androidx.appcompat.widget.LinearLayoutCompat
+                        android:id="@+id/checkout_form_nama"
                         android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
+                        android:layout_height="0dp"
+                        android:orientation="horizontal"
+                        android:gravity="center_vertical"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toTopOf="parent"/>
-
-                    <View
-                        android:layout_width="match_parent"
-                        android:layout_height="1dp"
-                        android:background="@color/submain_text"
-                        android:layout_marginTop="@dimen/pad_md"
-                        android:layout_marginBottom="@dimen/pad_md"/>
-
-                    <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:orientation="horizontal"
-                        android:weightSum="2">
-
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="Total pesanan"
-                            android:layout_weight="1"
-                            android:textColor="@color/main_text"
-                            android:fontFamily="@font/montserrat"/>
-
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="Rp 30.000"
-                            android:layout_weight="1"
-                            android:gravity="end"
-                            android:textColor="@color/submain_text"
-                            android:fontFamily="@font/montserrat"/>
-
-                    </LinearLayout>
-
-                </LinearLayout>
-
-                <androidx.constraintlayout.widget.ConstraintLayout
-                    android:id="@+id/produk_detail"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:padding="@dimen/pad_md"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@id/checkout_produk"
-                    android:layout_marginTop="@dimen/pad_md"
-                    android:layout_marginBottom="@dimen/pad_md"
-                    android:background="@color/white">
-                    <TextView
-                        android:id="@+id/tv_namapenerima"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="Nama Penerima"
-                        android:padding="@dimen/pad_sm"
-                        android:textSize="@dimen/pad_t_md"
                         app:layout_constraintTop_toTopOf="parent"
-                        app:layout_constraintLeft_toLeftOf="parent"/>
+                        android:layout_marginVertical="@dimen/pad_md">
 
-                    <com.google.android.material.textfield.TextInputLayout
-                        android:id="@+id/et_namapenerima"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:hint="Masukkan Nama Penerima"
-                        app:layout_constraintTop_toBottomOf="@id/tv_namapenerima">
-
-                        <com.google.android.material.textfield.TextInputEditText
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:inputType="text"
-                            android:fontFamily="@font/montserrat_regular"/>
-                    </com.google.android.material.textfield.TextInputLayout>
-
-                    <TextView
-                        android:id="@+id/tv_alamatpenerima"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="Alamat Penerima"
-                        android:padding="@dimen/pad_sm"
-                        android:textSize="@dimen/pad_t_md"
-                        app:layout_constraintTop_toBottomOf="@id/et_namapenerima"
-                        app:layout_constraintLeft_toLeftOf="parent"/>
-
-                    <com.google.android.material.textfield.TextInputLayout
-                        android:id="@+id/et_alamatpenerima"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:hint="Masukkan Alamat Penerima"
-                        app:layout_constraintTop_toBottomOf="@id/tv_alamatpenerima">
-                        <com.google.android.material.textfield.TextInputEditText
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:inputType="text"
-                            android:fontFamily="@font/montserrat_regular"/>
-                    </com.google.android.material.textfield.TextInputLayout>
-
-                    <TextView
-                        android:id="@+id/checkout_payment_method_title"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:contentDescription="Ini adalah harga produk awal sebelum dihitung diskon"
-                        android:fontFamily="@font/montserrat"
-                        android:padding="@dimen/pad_sm"
-                        android:text="Metode pembayaran"
-                        android:textSize="@dimen/pad_t_md"
-                        app:layout_constraintLeft_toLeftOf="parent"
-                        app:layout_constraintTop_toBottomOf="@id/et_alamatpenerima" />
-
-                    <com.google.android.material.textfield.TextInputLayout
-                        android:id="@+id/checkout_payment_method"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:hint="Pilih metode pembayaran"
-                        app:layout_constraintLeft_toLeftOf="parent"
-                        app:layout_constraintTop_toBottomOf="@id/checkout_payment_method_title">
-
-                        <com.google.android.material.textfield.TextInputEditText
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:inputType="textAutoComplete"
-                            android:fontFamily="@font/montserrat_regular"/>
-                    </com.google.android.material.textfield.TextInputLayout>
-
-                    <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:orientation="vertical"
-                        app:layout_constraintLeft_toLeftOf="parent"
-                        app:layout_constraintRight_toRightOf="parent"
-                        app:layout_constraintTop_toBottomOf="@id/checkout_payment_method">
-
-                        <androidx.recyclerview.widget.RecyclerView
-                            android:id="@+id/checkout_hitungan_subtotal"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            tools:listitem="@layout/item_checkout_hitungan"/>
-
-                        <View
-                            android:layout_width="match_parent"
-                            android:layout_height="1dp"
-                            android:background="@color/submain_text"
-                            android:layout_marginTop="@dimen/pad_md"
-                            android:layout_marginBottom="@dimen/pad_md"/>
-
-                        <LinearLayout
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:orientation="horizontal"
-                            android:weightSum="2">
-
-                            <TextView
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:text="Total"
-                                android:layout_weight="1"
-                                android:textColor="@color/main_text"
-                                android:fontFamily="@font/montserrat"/>
-
-                            <TextView
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:text="Rp 12.000"
-                                android:layout_weight="1"
-                                android:gravity="end"
-                                android:textColor="@color/main_text"
-                                android:fontFamily="@font/montserrat"/>
-
-                        </LinearLayout>
-
-
-                        <TextView
+                        <ImageView
                             android:layout_width="wrap_content"
-                            android:layout_height="0dp"
-                            android:text="Sudah termasuk pajak"
-                            android:layout_weight="1"
-                            android:textColor="@color/submain_text"
-                            android:fontFamily="@font/montserrat"
-                            android:layout_gravity="end"/>
+                            android:layout_height="wrap_content"
+                            android:src="@drawable/ic_account"
+                            android:layout_marginHorizontal="@dimen/pad_md"
+                            app:tint="@color/submain_text"/>
 
-                    </LinearLayout>
+                        <com.google.android.material.textfield.TextInputLayout
+                            android:id="@+id/et_namapenerima"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:hint="Masukkan Nama Penerima">
+
+                            <com.google.android.material.textfield.TextInputEditText
+                                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.ExposedDropdownMenu"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:fontFamily="@font/montserrat_regular"
+                                android:inputType="text" />
+                        </com.google.android.material.textfield.TextInputLayout>
+
+                    </androidx.appcompat.widget.LinearLayoutCompat>
+
+                    <androidx.appcompat.widget.LinearLayoutCompat
+                        android:id="@+id/checkout_form_alamat"
+                        android:layout_width="match_parent"
+                        android:layout_height="0dp"
+                        android:orientation="horizontal"
+                        android:gravity="center_vertical"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/checkout_form_nama"
+                        android:layout_marginVertical="@dimen/pad_md">
+
+                        <ImageView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:src="@drawable/ic_loc"
+                            android:layout_marginHorizontal="@dimen/pad_md"
+                            app:tint="@color/submain_text"/>
+
+                        <com.google.android.material.textfield.TextInputLayout
+                            android:id="@+id/et_alamatpenerima"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:hint="Masukkan Alamat Penerima">
+
+                            <com.google.android.material.textfield.TextInputEditText
+                                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.ExposedDropdownMenu"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:fontFamily="@font/montserrat_regular"
+                                android:inputType="text" />
+                        </com.google.android.material.textfield.TextInputLayout>
+
+                    </androidx.appcompat.widget.LinearLayoutCompat>
+
+
+                    <androidx.appcompat.widget.LinearLayoutCompat
+                        android:id="@+id/checkout_form_notelp"
+                        android:layout_width="match_parent"
+                        android:layout_height="0dp"
+                        android:orientation="horizontal"
+                        android:gravity="center_vertical"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/checkout_form_alamat"
+                        android:layout_marginVertical="@dimen/pad_md">
+
+                        <ImageView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:src="@drawable/ic_phone"
+                            android:layout_marginHorizontal="@dimen/pad_md"
+                            app:tint="@color/submain_text"/>
+
+                        <com.google.android.material.textfield.TextInputLayout
+                            android:id="@+id/et_notelppenerima"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:hint="Masukkan No. Telp Penerima">
+
+                            <com.google.android.material.textfield.TextInputEditText
+                                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.ExposedDropdownMenu"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:fontFamily="@font/montserrat_regular"
+                                android:inputType="number" />
+                        </com.google.android.material.textfield.TextInputLayout>
+
+                    </androidx.appcompat.widget.LinearLayoutCompat>
+
+                    <androidx.appcompat.widget.LinearLayoutCompat
+                        android:layout_width="match_parent"
+                        android:layout_height="0dp"
+                        android:orientation="horizontal"
+                        android:gravity="center_vertical"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/checkout_form_notelp"
+                        android:layout_marginVertical="@dimen/pad_md">
+
+                        <ImageView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:src="@drawable/ic_payment"
+                            android:layout_marginHorizontal="@dimen/pad_md"
+                            app:tint="@color/submain_text"/>
+
+                        <com.google.android.material.textfield.TextInputLayout
+                            android:id="@+id/checkout_payment_method"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:hint="Pilih metode pembayaran"
+                            app:layout_constraintLeft_toLeftOf="parent">
+
+                            <com.google.android.material.textfield.MaterialAutoCompleteTextView
+                                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.ExposedDropdownMenu"
+                                android:id="@+id/filled_exposed_dropdown"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:fontFamily="@font/montserrat_regular"
+                                android:inputType="textAutoComplete" />
+                        </com.google.android.material.textfield.TextInputLayout>
+
+                    </androidx.appcompat.widget.LinearLayoutCompat>
 
                 </androidx.constraintlayout.widget.ConstraintLayout>
 
@@ -312,9 +266,9 @@
                 android:fontFamily="@font/montserrat"/>
 
             <TextView
+                android:id="@+id/checkout_total_bayar"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Rp 10.000"
                 android:fontFamily="@font/montserrat"
                 android:textColor="@color/main_text"/>
 
