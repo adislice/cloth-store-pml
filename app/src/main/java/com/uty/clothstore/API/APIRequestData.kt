@@ -40,11 +40,14 @@ interface APIRequestData {
     // Transaksi
     // * Tambah transaksi
     @POST("transaksi/tambah_transaksi.php")
+    @FormUrlEncoded
     fun tambah_transaksi(@Field("id_user") id_user: Int,
-                              @Field("penerima") penerima: String,
-                              @Field("alamat_penerima") alamat_penerima: String,
-                              @Field("no_telp_penerima") no_telp_penerima: String,
-                              @Field("status") status: String
+                         @Field("subtotal") subtotal: Int,
+                         @Field("penerima") penerima: String,
+                         @Field("alamat_penerima") alamat_penerima: String,
+                         @Field("no_telp_penerima") no_telp_penerima: String,
+                         @Field("metode_pembayaran") metode_pembayaran: String,
+                         @Field("status") status: String
     ): Call<ResponseModel<TambahTransaksiModel>>
 
     // * Tambah produk ke transaksi
