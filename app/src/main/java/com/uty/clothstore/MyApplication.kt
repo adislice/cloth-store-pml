@@ -2,6 +2,7 @@ package com.uty.clothstore
 
 import android.app.Application
 import android.content.Context
+import android.util.Log
 import android.widget.Toast
 import com.google.gson.Gson
 import com.google.gson.reflect.TypeToken
@@ -55,9 +56,10 @@ class MyApplication: Application() {
                 val json2 = sharedPref.getString("keranjang", null)
                 val type = object : TypeToken<ArrayList<KeranjangRVModel>>() {}.type
                 list = gson.fromJson<ArrayList<KeranjangRVModel>>(json2, type)
-                for (i in list.indices) {
+                for (i in 0 until list.size) {
                     if (list[i].produkId == idProduk) {
                         list.removeAt(i)
+                        break
                     }
                 }
                 val json = gson.toJson(list)//converting list to Json

@@ -24,7 +24,7 @@
                 android:id="@+id/keranjang_gambar_produk"
                 android:layout_width="100dp"
                 android:layout_height="100dp"
-                android:src="@drawable/user"
+                android:src="@drawable/nophoto"
                 android:scaleType="centerCrop"
                 android:contentDescription="Ini adalah gambar produknya" />
 
@@ -43,7 +43,7 @@
                     android:layout_marginBottom="@dimen/pad_sm"
                     android:ellipsize="marquee"
                     android:maxLines="1"
-                    android:text="Judul Produk"
+                    android:text=" "
                     android:textColor="@color/main_text"
                     android:fontFamily="@font/montserrat_bold"
                     android:textSize="12sp"/>
@@ -57,7 +57,7 @@
                     android:layout_marginBottom="@dimen/pad_sm"
                     android:ellipsize="marquee"
                     android:lines="1"
-                    android:text="Rp400.000"
+                    android:text=" "
                     android:textColor="@color/submain_text"
                     android:fontFamily="@font/montserrat_regular"
                     android:textSize="12sp"/>
@@ -71,7 +71,7 @@
                     android:layout_marginBottom="@dimen/pad_sm"
                     android:ellipsize="marquee"
                     android:lines="1"
-                    android:text="1x"
+                    android:text=" "
                     android:textColor="@color/submain_text"
                     android:fontFamily="@font/montserrat_regular"
                     android:textSize="12sp"/>

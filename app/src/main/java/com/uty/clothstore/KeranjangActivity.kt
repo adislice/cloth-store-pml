@@ -7,6 +7,7 @@ import android.view.View
 import android.widget.Button
 import android.widget.TextView
 import android.widget.Toast
+import androidx.appcompat.widget.Toolbar
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.uty.clothstore.adapter.KeranjangRVAdapter
@@ -23,6 +24,11 @@ class KeranjangActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_keranjang)
+
+        val back_btn = findViewById<Toolbar>(R.id.keranjang_appbar)
+        back_btn.setNavigationOnClickListener {
+            onBackPressed()
+        }
 
         btnCheckout = findViewById(R.id.keranjang_checkout)
         loadingKrj = findViewById(R.id.loading_keranjang)

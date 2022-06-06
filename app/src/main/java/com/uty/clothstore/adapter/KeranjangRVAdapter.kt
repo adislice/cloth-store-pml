@@ -53,9 +53,9 @@ class KeranjangRVAdapter(private val dataSet: ArrayList<KeranjangRVModel>, priva
 
     // Replace the contents of a view (invoked by the layout manager)
     override fun onBindViewHolder(viewHolder: ViewHolder, position: Int) {
-        val produkId: Int = dataSet[position].produkId
-        val produkJml = dataSet[position].produkQty
-        val hargaStlhDiskon = dataSet[position].produkHargaDiskon
+        val produkId: Int = dataSet[viewHolder.adapterPosition].produkId
+        val produkJml = dataSet[viewHolder.adapterPosition].produkQty
+        val hargaStlhDiskon = dataSet[viewHolder.adapterPosition].produkHargaDiskon
 
         val ardData = RetrofitServer.getConnection()!!.create(APIRequestData::class.java)
         val tampilProduk = ardData.produk_tampil_data(produkId)
@@ -67,28 +67,26 @@ class KeranjangRVAdapter(private val dataSet: ArrayList<KeranjangRVModel>, priva
                 when(response.code()){
                     200 -> {
                         val produkGambar = response.body()!!.records!![0].gambar
-                        val produkHarga = response.body()!!.records!![0].harga
+//                        val produkHarga = response.body()!!.records!![0].harga
                         viewHolder.keranjangProdukJudul.text = response.body()!!.records!![0].nama_produk
                         viewHolder.keranjangProdukHarga.text = MyApplication.rupiah(hargaStlhDiskon.toInt())
-                        viewHolder.keranjangProdukJumlah.text = produkJml.toString()
+                        viewHolder.keranjangProdukJumlah.text = produkJml.toString()+"x"
                         Glide.with(viewHolder.itemView.context)
                             .load(produkGambar)
                             .transition(DrawableTransitionOptions.withCrossFade())
                             .placeholder(R.drawable.nophoto)
                             .into(viewHolder.itemView.findViewById(R.id.keranjang_gambar_produk))
-                        viewHolder.keranjangProdukHapus.setOnClickListener {
-                            MyApplication.delFromCart(viewHolder.itemView.context, produkId)
 
+                        viewHolder.keranjangProdukHapus.setOnClickListener {
                             dataSet.removeAt(viewHolder.adapterPosition)
                             notifyItemRemoved(viewHolder.adapterPosition)
+                            MyApplication.delFromCart(viewHolder.itemView.context, produkId)
 
                             var total: Double = 0.0
                             for (item in MyApplication.getSemuaKeranjang(viewHolder.itemView.context)!!) {
                                 total += item.produkHargaDiskon * item.produkQty
                             }
-
                             krjView.text = "Rp. " + total.toInt()
-
                         }
                     }
                 }

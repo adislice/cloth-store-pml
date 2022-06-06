@@ -23,4 +23,9 @@
         <item name="fontFamily">@font/montserrat_bold</item>
         <item name="android:fontFamily">@font/montserrat_bold</item>
     </style>
+    <style name="TextAppearance.App.TitleMedium" parent="TextAppearance.Material3.TitleMedium">
+        <item name="android:windowNoTitle">true</item>
+        <item name="fontFamily">@font/montserrat_bold</item>
+        <item name="android:fontFamily">@font/montserrat_bold</item>
+    </style>
 </resources>
