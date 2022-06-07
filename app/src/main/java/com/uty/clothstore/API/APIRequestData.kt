@@ -44,7 +44,7 @@ interface APIRequestData {
     fun tambah_transaksi(@Field("id_user") id_user: Int,
                          @Field("subtotal") subtotal: Int,
                          @Field("penerima") penerima: String,
-                         @Field("alamat_penerima") alamat_penerima: String,
+                         @Field("alamat_pengiriman") alamat_pengiriman: String,
                          @Field("no_telp_penerima") no_telp_penerima: String,
                          @Field("metode_pembayaran") metode_pembayaran: String,
                          @Field("status") status: String
