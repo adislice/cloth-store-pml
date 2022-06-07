@@ -2,10 +2,13 @@ package com.uty.clothstore
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.util.Log
 import android.view.View
 import android.widget.*
+import com.airbnb.lottie.LottieAnimationView
 import com.uty.clothstore.API.APIRequestData
 import com.uty.clothstore.API.RetrofitServer
+import com.uty.clothstore.model.KeranjangRVModel
 import com.uty.clothstore.model.ResponseModel
 import com.uty.clothstore.model.TambahTransaksiModel
 import retrofit2.Call
@@ -22,6 +25,7 @@ class CheckoutActivity : AppCompatActivity() {
     private lateinit var etNoTelp: EditText
     private lateinit var etPayment: AutoCompleteTextView
     private lateinit var btnBayar: TextView
+    private lateinit var sukses: View
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -35,6 +39,7 @@ class CheckoutActivity : AppCompatActivity() {
         etPayment   = findViewById(R.id.checkout_et_payment)
         totalBayar  = findViewById(R.id.checkout_total_bayar)
         btnBayar    = findViewById(R.id.checkout_bayar)
+        sukses = findViewById(R.id.layoutsukses)
 
         val totalan = intent.getDoubleExtra("total", 0.0)
 
@@ -72,7 +77,7 @@ class CheckoutActivity : AppCompatActivity() {
             } else {
                 payment(totalan.toInt())
                 Toast.makeText(applicationContext,"Transaksi berhasil dibuat", Toast.LENGTH_SHORT).show()
-                finish()
+//                finish()
             }
         }
     }
@@ -97,7 +102,20 @@ class CheckoutActivity : AppCompatActivity() {
             ) {
                 when(response.code()){
                     200 -> {
-                        Toast.makeText(this@CheckoutActivity, response.body()!!.message, Toast.LENGTH_LONG).show()
+                        val idTransaksi = response.body()!!.records!![0].id_transaksi
+                        val carts = MyApplication.getSemuaKeranjang(this@CheckoutActivity)!!
+                        for (item in carts) {
+                            tambah_item_ke_transaksi(idTransaksi, item)
+                        }
+                        sukses.visibility = View.VISIBLE
+                        val lottie_sukses = sukses.findViewById<LottieAnimationView>(R.id.lottie_sukses)
+                        lottie_sukses.playAnimation()
+                        val btn_selesai = sukses.findViewById<Button>(R.id.btn_selesai)
+                        btn_selesai.setOnClickListener {
+                            sukses.visibility = View.GONE
+                            MyApplication.bersihkanKeranjang(this@CheckoutActivity)
+                            finish()
+                        }
                     }
                 }
                 loading.visibility = View.GONE
@@ -108,6 +126,32 @@ class CheckoutActivity : AppCompatActivity() {
                 Toast.makeText(this@CheckoutActivity, "Transaksi gagal", Toast.LENGTH_LONG).show()
             }
         })
+    }
+
+    private fun tambah_item_ke_transaksi(idTransaksi: Int, item: KeranjangRVModel){
+        val total = item.produkHargaDiskon*item.produkQty
+        val ardData = RetrofitServer.getConnection()!!.create(APIRequestData::class.java)
+        val tambahDetailTransaksi = ardData.tambah_detail_transaksi(idTransaksi, item.produkId, item.produkQty, total.toInt())
+        tambahDetailTransaksi.enqueue(object: Callback<ResponseModel<String>>{
+            override fun onResponse(
+                call: Call<ResponseModel<String>>,
+                response: Response<ResponseModel<String>>,
+            ) {
+                when(response.code()){
+                    200 -> {
+                        Log.v("Transaksi", "Berhasil menambahkan item ${item.produkId.toString()} ke transaksi ${idTransaksi.toString()}")
+                    }
+                    404 -> {
+                        Log.v("Transaksi", "Gagal menambahkan item ${item.produkId.toString()} ke transaksi ${idTransaksi.toString()}")
+                    }
+                }
+            }
+
+            override fun onFailure(call: Call<ResponseModel<String>>, t: Throwable) {
+                TODO("Not yet implemented")
+            }
+        })
+
     }
 }
 

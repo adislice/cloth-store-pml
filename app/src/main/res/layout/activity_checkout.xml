@@ -292,5 +292,9 @@
         android:id="@+id/loading_checkout"
         android:visibility="gone"
         layout="@layout/layout_loading"/>
+    <include
+        android:id="@+id/layoutsukses"
+        android:visibility="gone"
+        layout="@layout/layout_success"/>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

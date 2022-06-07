@@ -52,10 +52,12 @@ interface APIRequestData {
 
     // * Tambah produk ke transaksi
     @POST("transaksi/tambah_detail_transaksi.php")
+    @FormUrlEncoded
     fun tambah_detail_transaksi(@Field("id_transaksi") id_transaksi: Int,
                                 @Field("id_produk") id_produk: Int,
-                                @Field("qty") qty: Int
-    ): Call<ResponseModel<*>>
+                                @Field("qty") qty: Int,
+                                @Field("total") total: Int
+    ): Call<ResponseModel<String>>
 
     // Produk per kategori
     @GET("produk/tampil_semua_data.php")

@@ -86,6 +86,23 @@ class MyApplication: Application() {
             }
             return list
         }
+        fun bersihkanKeranjang(context: Context){
+            var list = ArrayList<KeranjangRVModel>()
+            val gson = Gson()
+            val sharedPref =  context.getSharedPreferences("app_data", Context.MODE_PRIVATE)
+            // cek dulu
+
+            val json2 = sharedPref.getString("keranjang", null)
+            val type = object : TypeToken<ArrayList<KeranjangRVModel>>() {}.type
+            list = gson.fromJson<ArrayList<KeranjangRVModel>>(json2, type)
+            list.clear()
+
+            val json = gson.toJson(list)//converting list to Json
+            with(sharedPref.edit()) {
+                putString("keranjang", json)
+                apply()
+            }
+        }
 
         fun rupiah(number: Int): String {
             val localeID = Locale("in", "ID")
